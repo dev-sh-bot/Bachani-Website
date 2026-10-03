@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #FBFAF5;
+  --color-sage: #EEF3E6;
+  --color-ink: #16211A;
+  --color-stone: #4B584F;
+  --color-line: #DCE3D2;
+  --color-forest: #0B5828;
+  --color-forest-deep: #062F17;
+  --color-leaf: #2C862F;
+  --color-gold: #CAA549;
+  --color-gold-ink: #7A5E16;
+  --color-soil: #5A4632;
+  --color-mango: #EFA43A;
+  --color-banana: #E6C23E;
+  --color-papaya: #EC8A3E;
+  --color-cucumber: #3E8E3E;
+  --color-sugarcane: #86B347;
+  --color-wheat-crop: #CFA64C;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius-sm: 12px;
+  --radius-card: 24px;
+  --radius-media: 32px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #FBFAF5;
+  color: #16211A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip; /* clip instead of hidden so position:sticky works */
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #DCE3D2;
+  border-radius: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #EEF3E6 25%, #DCE3D2 50%, #EEF3E6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,178 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import Eyebrow from '../components/Eyebrow';
+import Button from '../components/Button';
+import HarvestAlmanac from '../components/HarvestAlmanac';
+import { crops, type Crop } from '../data/crops';
+import { images } from '../data/images';
+
+const FILTERS = ['All', 'Fruit', 'Vegetable', 'Field crop'] as const;
+type Filter = typeof FILTERS[number];
+
+export default function CropsPage() {
+  const [filter, setFilter] = useState<Filter>('All');
+
+  const displayed = filter === 'All' ? crops : crops.filter(c => c.category === filter);
+
+  return (
+    <>
+
+      {/* Page header */}
+      <section className="pt-36 pb-16 px-5 md:px-8" style={{ backgroundColor: '#FBFAF5' }}>
+        <div className="max-w-[1320px] mx-auto">
+          <Eyebrow className="mb-6">OUR CROPS</Eyebrow>
+          <h1
+            className="font-display text-5xl md:text-7xl font-semibold tracking-[-0.02em] mb-6 leading-[0.98]"
+            style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A', maxWidth: '800px' }}
+          >
+            Six crops across orchards, tunnels and fields
+          </h1>
+          <p className="text-lg text-stone max-w-lg">
+            Each crop at Bachani Farms has its own season, its own growing method and its own team.
+          </p>
+        </div>
+      </section>
+
+      {/* Filter pills */}
+      <div className="px-5 md:px-8 pb-4" style={{ backgroundColor: '#FBFAF5' }}>
+        <div className="max-w-[1320px] mx-auto flex flex-wrap gap-2">
+          {FILTERS.map(f => (
+            <button
+              key={f}
+              type="button"
+              onClick={() => setFilter(f)}
+              className="px-5 py-2 rounded-full text-sm font-medium transition-colors"
+              style={{
+                backgroundColor: filter === f ? '#0B5828' : '#EEF3E6',
+                color: filter === f ? '#FBFAF5' : '#16211A',
+              }}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Crop list */}
+      <section className="py-12 px-5 md:px-8" style={{ backgroundColor: '#FBFAF5' }} aria-label="Crop list">
+        <div className="max-w-[1320px] mx-auto space-y-0 divide-y" style={{ borderColor: '#DCE3D2' }}>
+          {displayed.map((crop, i) => {
+            const img = images[crop.imageKey];
+            return (
+              <div
+                key={crop.slug}
+                className={`group flex flex-col md:flex-row gap-10 py-16 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+              >
+                <div className="w-full md:w-1/2 rounded-[32px] overflow-hidden aspect-[4/3] bg-sage">
+                  {img && (
+                    <img
+                      src={img.url}
+                      alt={img.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03] group-hover:-rotate-1"
+                      loading="lazy"
+                      width={700}
+                      height={525}
+                    />
+                  )}
+                </div>
+                <div className="w-full md:w-1/2">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em] mb-3" style={{ color: '#7A5E16' }}>
+                    {crop.methodLabel}
+                  </div>
+                  <h2
+                    className="font-display text-5xl md:text-6xl font-semibold tracking-[-0.02em] mb-4"
+                    style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}
+                  >
+                    {crop.name}
+                  </h2>
+                  <p className="text-base text-stone leading-relaxed mb-6">{crop.shortDescription}</p>
+                  <div className="flex flex-wrap gap-6 mb-8">
+                    <div>
+                      <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-stone mb-1">Method</div>
+                      <div className="text-sm font-medium text-ink">{crop.method}</div>
+                    </div>
+                    <div>
+                      <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-stone mb-1">Harvest</div>
+                      <div className="text-sm font-medium text-ink">{crop.harvestLabel}</div>
+                    </div>
+                    <div>
+                      <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-stone mb-1">Area</div>
+                      <div className="text-sm font-medium text-ink">{crop.area}</div>
+                    </div>
+                  </div>
+                  <Link
+                    href={`/crops/${crop.slug}`}
+                    className="inline-flex items-center gap-2 text-forest font-semibold hover:text-leaf transition-colors group/link"
+                  >
+                    More about {crop.name}
+                    <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Harvest Almanac */}
+      <section className="py-24 md:py-32 px-5 md:px-8" style={{ backgroundColor: '#EEF3E6' }} aria-labelledby="almanac-heading">
+        <div className="max-w-[1320px] mx-auto">
+          <h2
+            id="almanac-heading"
+            className="font-display text-4xl font-semibold tracking-[-0.02em] mb-4"
+            style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}
+          >
+            The farm year at a glance
+          </h2>
+          <p className="text-stone mb-10">Harvest months are indicative and will be confirmed by the farm.</p>
+          <HarvestAlmanac />
+        </div>
+      </section>
+
+      {/* SEO text block */}
+      <section className="py-16 px-5 md:px-8" style={{ backgroundColor: '#FBFAF5' }}>
+        <div className="max-w-[1320px] mx-auto">
+          <div className="max-w-[680px]">
+            <h2
+              className="font-display text-2xl font-semibold tracking-[-0.02em] mb-5"
+              style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}
+            >
+              Crops grown at Bachani Farms
+            </h2>
+            <p className="text-base text-stone leading-relaxed">
+              Bachani Farms grows fruit, vegetables and field crops across [00] acres in [District], Pakistan. Our fruit crops are{' '}
+              <Link href="/crops/mango" className="text-forest hover:text-leaf underline">mango</Link>,{' '}
+              <Link href="/crops/banana" className="text-forest hover:text-leaf underline">banana</Link> and{' '}
+              <Link href="/crops/papaya" className="text-forest hover:text-leaf underline">papaya</Link>. Our vegetable crop is{' '}
+              <Link href="/crops/cucumber" className="text-forest hover:text-leaf underline">cucumber</Link>, grown in tunnels through the cooler months. Our field crops are{' '}
+              <Link href="/crops/sugarcane" className="text-forest hover:text-leaf underline">sugarcane</Link> and{' '}
+              <Link href="/crops/wheat" className="text-forest hover:text-leaf underline">wheat</Link>, grown in open fields with the seasons. Together they keep the farm working through the whole year, and we supply them under contract to trusted buyers who take them on to markets in Pakistan and abroad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Closing band */}
+      <section
+        className="py-20 px-5 md:px-8 text-center"
+        style={{ backgroundColor: '#062F17' }}
+      >
+        <div className="max-w-[1320px] mx-auto">
+          <h2
+            className="font-display text-3xl font-semibold tracking-[-0.02em] mb-6"
+            style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#FBFAF5' }}
+          >
+            Questions about our crops?
+          </h2>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button to="/contact" variant="light">Contact Us</Button>
+            <Button href="https://wa.me/923000000000" variant="light">WhatsApp Us</Button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
