@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ContactPage from '@/views/ContactPage';
 
 export const metadata: Metadata = {
-  title: 'Contact Bachani Farms | Phone, WhatsApp, Email & Map',
+  title: 'Contact Bachani Farms | Message, Address & Map',
   description:
-    'Contact Bachani Farms in [District], Pakistan by phone, WhatsApp, email or message form. Buyers can ask about contract supply of our crops.',
+    'Send Bachani Farms a message, view the farm address and find its location on the map.',
   alternates: { canonical: '/contact' },
 };
 

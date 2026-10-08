@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { Warehouse, Snowflake, Waves, Tent, Tractor, Home, Droplets, Sprout, ShieldCheck, HandHeart } from 'lucide-react';
 import Eyebrow from '../components/Eyebrow';
 import Button from '../components/Button';
@@ -215,14 +214,9 @@ export default function FarmPage() {
                     {method.links.map(slug => {
                       const crop = crops.find(c => c.slug === slug);
                       return crop ? (
-                        <Link
-                          key={slug}
-                          href={`/crops/${slug}`}
-                          className="px-3 py-1 rounded-full text-sm font-medium hover:bg-sage transition-colors"
-                          style={{ color: '#0B5828', border: '1px solid #DCE3D2' }}
-                        >
+                        <span key={slug} className="px-3 py-1 rounded-full text-sm font-medium" style={{ color: '#0B5828', border: '1px solid #DCE3D2' }}>
                           {crop.name}
-                        </Link>
+                        </span>
                       ) : null;
                     })}
                   </div>

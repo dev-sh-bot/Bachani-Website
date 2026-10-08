@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Link from 'next/link';
 import { growthPanels } from '../data/growth';
 import { crops } from '../data/crops';
 import { images } from '../data/images';
@@ -407,9 +406,8 @@ export default function HowWeGrow() {
                         const crop = crops.find(c => c.slug === slug);
                         if (!crop) return null;
                         return (
-                          <Link
+                          <span
                             key={slug}
-                            href={`/crops/${slug}`}
                             className="grow-pill"
                             style={{
                               display: 'inline-flex',
@@ -439,7 +437,7 @@ export default function HowWeGrow() {
                               }}
                             />
                             {crop.name}
-                          </Link>
+                          </span>
                         );
                       })}
                     </div>

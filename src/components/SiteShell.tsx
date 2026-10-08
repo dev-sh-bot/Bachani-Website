@@ -1,13 +1,9 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import Header from './Header';
 import Footer from './Footer';
-import MobileActionBar from './MobileActionBar';
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
   return (
     <div className="min-h-screen flex flex-col overflow-x-clip" style={{ backgroundColor: '#FBFAF5' }}>
       <a
@@ -24,8 +20,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <Footer showMobileActionPad={pathname !== '/contact'} />
-      <MobileActionBar />
+      <Footer />
     </div>
   );
 }

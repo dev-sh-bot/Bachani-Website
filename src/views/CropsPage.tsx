@@ -1,10 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import Eyebrow from '../components/Eyebrow';
-import Button from '../components/Button';
 import HarvestAlmanac from '../components/HarvestAlmanac';
 import { crops, type Crop } from '../data/crops';
 import { images } from '../data/images';
@@ -103,13 +100,6 @@ export default function CropsPage() {
                       <div className="text-sm font-medium text-ink">{crop.area}</div>
                     </div>
                   </div>
-                  <Link
-                    href={`/crops/${crop.slug}`}
-                    className="inline-flex items-center gap-2 text-forest font-semibold hover:text-leaf transition-colors group/link"
-                  >
-                    More about {crop.name}
-                    <ArrowRight size={16} strokeWidth={1.5} className="transition-transform group-hover/link:translate-x-1" />
-                  </Link>
                 </div>
               </div>
             );
@@ -143,36 +133,12 @@ export default function CropsPage() {
               Crops grown at Bachani Farms
             </h2>
             <p className="text-base text-stone leading-relaxed">
-              Bachani Farms grows fruit, vegetables and field crops across 100 acres in [District], Pakistan. Our fruit crops are{' '}
-              <Link href="/crops/mango" className="text-forest hover:text-leaf underline">mango</Link>,{' '}
-              <Link href="/crops/banana" className="text-forest hover:text-leaf underline">banana</Link> and{' '}
-              <Link href="/crops/papaya" className="text-forest hover:text-leaf underline">papaya</Link>. Our vegetable crop is{' '}
-              <Link href="/crops/cucumber" className="text-forest hover:text-leaf underline">cucumber</Link>, grown in tunnels through the cooler months. Our field crops are{' '}
-              <Link href="/crops/sugarcane" className="text-forest hover:text-leaf underline">sugarcane</Link> and{' '}
-              <Link href="/crops/wheat" className="text-forest hover:text-leaf underline">wheat</Link>, grown in open fields with the seasons. Together they keep the farm working through the whole year, and we supply them under contract to trusted buyers who take them on to markets in Pakistan and abroad.
+              Bachani Farms grows mango, banana, papaya, cucumber, sugarcane and wheat across 100 acres in [District], Pakistan. Each crop follows its own season, and we supply our harvest under contract to trusted buyers in Pakistan and abroad.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Closing band */}
-      <section
-        className="py-20 px-5 md:px-8 text-center"
-        style={{ backgroundColor: '#062F17' }}
-      >
-        <div className="max-w-[1320px] mx-auto">
-          <h2
-            className="font-display text-3xl font-semibold tracking-[-0.02em] mb-6"
-            style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#FBFAF5' }}
-          >
-            Questions about our crops?
-          </h2>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Button to="/contact" variant="light">Contact Us</Button>
-            <Button href="https://wa.me/923000000000" variant="light">WhatsApp Us</Button>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

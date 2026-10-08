@@ -219,16 +219,16 @@ export default function QualityPage() {
 
       {/* FAQ */}
       <section className="py-24 md:py-32 px-5 md:px-8" style={{ backgroundColor: '#FBFAF5' }} aria-labelledby="quality-faq-heading">
-        <div className="max-w-[1320px] mx-auto">
-          <div className="max-w-2xl">
+          <div className="max-w-[1320px] mx-auto">
+          <div className="max-w-2xl mx-auto text-center">
             <h2
               id="quality-faq-heading"
-              className="font-display text-3xl font-semibold tracking-[-0.02em] mb-8"
+              className="font-display text-3xl font-semibold tracking-[-0.02em] mb-8 mx-auto"
               style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}
             >
               Common questions about quality
             </h2>
-            <div itemScope itemType="https://schema.org/FAQPage">
+            <div itemScope itemType="https://schema.org/FAQPage" className="text-left">
               <Accordion items={faqs.quality} />
             </div>
           </div>
@@ -245,7 +245,6 @@ export default function QualityPage() {
             Looking for a reliable grower?
           </h2>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button to="/partners" variant="light">Partner With Us</Button>
             <Button to="/contact" variant="light">Contact Us</Button>
           </div>
         </div>

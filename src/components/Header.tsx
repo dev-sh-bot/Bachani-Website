@@ -3,10 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
-import { crops } from '../data/crops';
-import { images } from '../data/images';
-import { site } from '../data/site';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 
 const FARM_LINKS = [
@@ -21,9 +18,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const lastYRef = useRef(0);
-  const [cropsOpen, setCropsOpen] = useState(false);
   const [farmOpen, setFarmOpen] = useState(false);
-  const cropsRef = useRef<HTMLDivElement>(null);
   const farmRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -33,7 +28,6 @@ export default function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setCropsOpen(false);
     setFarmOpen(false);
   }, [pathname]);
 
@@ -60,7 +54,6 @@ export default function Header() {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (!cropsRef.current?.contains(e.target as Node)) setCropsOpen(false);
       if (!farmRef.current?.contains(e.target as Node)) setFarmOpen(false);
     };
     document.addEventListener('mousedown', handler);
@@ -69,7 +62,7 @@ export default function Header() {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setCropsOpen(false); setFarmOpen(false); setMobileOpen(false); }
+      if (e.key === 'Escape') { setFarmOpen(false); setMobileOpen(false); }
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
@@ -106,66 +99,16 @@ export default function Header() {
               About Us
             </Link>
 
-            {/* Our Crops mega menu */}
-            <div ref={cropsRef} className="relative">
-              <button
-                type="button"
-                onClick={() => { setCropsOpen(!cropsOpen); setFarmOpen(false); }}
-                onMouseEnter={() => { setCropsOpen(true); setFarmOpen(false); }}
-                className="flex items-center gap-1 px-3 py-2 text-sm font-body font-medium text-ink hover:text-forest transition-colors rounded-full hover:bg-sage"
-                aria-expanded={cropsOpen}
-                aria-haspopup="true"
-              >
-                Our Crops <ChevronDown size={14} strokeWidth={1.5} className={`transition-transform ${cropsOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {cropsOpen && (
-                <div
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 rounded-[24px] p-6 shadow-xl z-50"
-                  style={{
-                    backgroundColor: '#FBFAF5',
-                    border: '1px solid #DCE3D2',
-                    width: '480px',
-                  }}
-                  onMouseLeave={() => setCropsOpen(false)}
-                >
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    {crops.map(crop => {
-                      const img = images[crop.imageKey];
-                      return (
-                        <Link
-                          key={crop.slug}
-                          href={`/crops/${crop.slug}`}
-                          className="flex items-center gap-3 p-3 rounded-xl hover:bg-sage transition-colors group"
-                        >
-                          <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-sage">
-                            {img && (
-                              <img src={img.url} alt={img.alt} className="w-full h-full object-cover" loading="lazy" width={40} height={40} />
-                            )}
-                          </div>
-                          <div>
-                            <div className="text-sm font-semibold text-ink group-hover:text-forest transition-colors">{crop.name}</div>
-                            <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-stone">{crop.methodLabel}</div>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  <Link
-                    href="/crops"
-                    className="flex items-center gap-2 text-sm font-semibold text-forest hover:text-leaf transition-colors"
-                  >
-                    View all crops <ArrowRight size={14} strokeWidth={1.5} />
-                  </Link>
-                </div>
-              )}
-            </div>
+            <Link href="/crops" className="px-3 py-2 text-sm font-body font-medium text-ink hover:text-forest transition-colors rounded-full hover:bg-sage">
+              Our Crops
+            </Link>
 
             {/* Our Farm dropdown */}
             <div ref={farmRef} className="relative">
               <button
                 type="button"
-                onClick={() => { setFarmOpen(!farmOpen); setCropsOpen(false); }}
-                onMouseEnter={() => { setFarmOpen(true); setCropsOpen(false); }}
+                onClick={() => setFarmOpen(!farmOpen)}
+                onMouseEnter={() => setFarmOpen(true)}
                 className="flex items-center gap-1 px-3 py-2 text-sm font-body font-medium text-ink hover:text-forest transition-colors rounded-full hover:bg-sage"
                 aria-expanded={farmOpen}
                 aria-haspopup="true"
@@ -191,7 +134,6 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/partners" className="px-3 py-2 text-sm font-body font-medium text-ink hover:text-forest transition-colors rounded-full hover:bg-sage">Partners</Link>
             <Link href="/news" className="px-3 py-2 text-sm font-body font-medium text-ink hover:text-forest transition-colors rounded-full hover:bg-sage">News</Link>
             <Link href="/gallery" className="px-3 py-2 text-sm font-body font-medium text-ink hover:text-forest transition-colors rounded-full hover:bg-sage">Gallery</Link>
           </nav>
@@ -249,7 +191,6 @@ export default function Header() {
               { label: 'About Us', href: '/about' },
               { label: 'Our Crops', href: '/crops' },
               { label: 'Our Farm', href: '/farm' },
-              { label: 'Partners', href: '/partners' },
               { label: 'News', href: '/news' },
               { label: 'Gallery', href: '/gallery' },
             ].map(item => (
@@ -263,28 +204,6 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-
-          {/* Crops grid */}
-          <div className="px-6 py-4">
-            <div className="font-mono text-[11px] uppercase tracking-[0.14em] mb-3" style={{ color: '#CAA549' }}>
-              Our Crops
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {crops.map(crop => (
-                <Link
-                  key={crop.slug}
-                  href={`/crops/${crop.slug}`}
-                  className="flex items-center gap-2.5 p-3 rounded-xl hover:bg-white/10 transition-colors"
-                >
-                  <div
-                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: crop.accentColor }}
-                  />
-                  <span className="text-paper text-sm font-medium">{crop.name}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
 
           <div className="px-6 py-6">
             <Link

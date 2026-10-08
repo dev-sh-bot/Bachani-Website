@@ -254,10 +254,9 @@ export default function HomePage() {
                 wheat: 'bento-wheat',
               };
               return (
-                <Link
+                <article
                   key={crop.slug}
-                  href={`/crops/${crop.slug}`}
-                  className={`group relative rounded-[24px] overflow-hidden bg-sage block ${bentoClass[crop.slug] ?? ''}`}
+                  className={`group relative rounded-[24px] overflow-hidden bg-sage ${bentoClass[crop.slug] ?? ''}`}
                 >
                   {img && (
                     <img
@@ -296,7 +295,7 @@ export default function HomePage() {
                       })}
                     </div>
                   </div>
-                </Link>
+                </article>
               );
             })}
           </div>
@@ -664,31 +663,6 @@ export default function HomePage() {
       </section>
 
       {/* 15. Contact band — same green as footer so they join cleanly */}
-      <section
-        className="pt-24 md:pt-28 pb-16 md:pb-20 px-5 md:px-8 text-center"
-        style={{ backgroundColor: '#062F17' }}
-        aria-labelledby="contact-band-heading"
-      >
-        <div className="max-w-[1320px] mx-auto">
-          <h2
-            id="contact-band-heading"
-            className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.02em] mb-4"
-            style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#FBFAF5' }}
-          >
-            Get in touch
-          </h2>
-          <p className="text-base mb-8 max-w-md mx-auto" style={{ color: 'rgba(251,250,245,0.7)' }}>
-            Have a question about the farm or our crops? We would be glad to hear from you.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center mb-6">
-            <Button to="/contact" variant="light">Contact Us</Button>
-            <Button href="https://wa.me/923000000000" variant="light">WhatsApp Us</Button>
-          </div>
-          <p className="font-mono text-sm" style={{ color: 'rgba(251,250,245,0.5)' }}>
-            +92 300 0000000
-          </p>
-        </div>
-      </section>
     </>
   );
 }

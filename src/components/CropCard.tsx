@@ -1,7 +1,5 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 import { type Crop } from '../data/crops';
 import { images } from '../data/images';
 
@@ -14,11 +12,7 @@ interface CropCardProps {
 export default function CropCard({ crop }: CropCardProps) {
   const img = images[crop.imageKey] || images['mango'];
   return (
-    <Link
-      href={`/crops/${crop.slug}`}
-      className="group block bg-white rounded-[24px] overflow-hidden border hover:shadow-lg transition-all duration-300"
-      style={{ borderColor: '#DCE3D2' }}
-    >
+    <article className="group block bg-white rounded-[24px] overflow-hidden border" style={{ borderColor: '#DCE3D2' }}>
       <div className="overflow-hidden aspect-[4/3] bg-sage">
         <img
           src={img.url}
@@ -58,15 +52,7 @@ export default function CropCard({ crop }: CropCardProps) {
             );
           })}
         </div>
-        <div className="flex items-center gap-1 text-forest font-medium text-sm">
-          <span>Explore</span>
-          <ArrowRight
-            size={14}
-            strokeWidth={1.5}
-            className="transition-transform duration-200 group-hover:translate-x-1"
-          />
-        </div>
       </div>
-    </Link>
+    </article>
   );
 }
