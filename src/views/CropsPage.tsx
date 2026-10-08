@@ -143,7 +143,7 @@ export default function CropsPage() {
               Crops grown at Bachani Farms
             </h2>
             <p className="text-base text-stone leading-relaxed">
-              Bachani Farms grows fruit, vegetables and field crops across [00] acres in [District], Pakistan. Our fruit crops are{' '}
+              Bachani Farms grows fruit, vegetables and field crops across 100 acres in [District], Pakistan. Our fruit crops are{' '}
               <Link href="/crops/mango" className="text-forest hover:text-leaf underline">mango</Link>,{' '}
               <Link href="/crops/banana" className="text-forest hover:text-leaf underline">banana</Link> and{' '}
               <Link href="/crops/papaya" className="text-forest hover:text-leaf underline">papaya</Link>. Our vegetable crop is{' '}

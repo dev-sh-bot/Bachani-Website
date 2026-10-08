@@ -1,6 +1,6 @@
 export const site = {
   name: 'Bachani Farms',
-  tagline: 'Growing mango, banana, papaya, cucumber, sugarcane and wheat on [00] acres in [District], Pakistan.',
+  tagline: 'Growing mango, banana, papaya, cucumber, sugarcane and wheat on 100 acres in [District], Pakistan.',
   phone: '+92 300 0000000',
   whatsapp: '+92 300 0000000',
   email: 'email@domain.com',

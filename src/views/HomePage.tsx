@@ -186,7 +186,7 @@ export default function HomePage() {
           >
             We are a working farm first. Every mango, cucumber, banana and stalk of wheat starts with soil we know, water we plan for, and a team that shows up in every season. Bachani Farms grows{' '}
             <strong className="font-semibold" style={{ color: '#0B5828' }}>six crops</strong>{' '}
-            across [00] acres in [District], and supplies them{' '}
+            across 100 acres in [District], and supplies them{' '}
             <strong className="font-semibold" style={{ color: '#0B5828' }}>under contract</strong>{' '}
             to buyers who take them to markets in Pakistan and around the world.
           </p>
@@ -425,7 +425,7 @@ export default function HomePage() {
               The people behind the farm
             </h2>
             <p className="text-base text-stone leading-relaxed mb-6">
-              Bachani Farms has been farming this land for [00] years. Today our team looks after [00] acres of orchards, tunnels and fields, and every crop is grown by people who know it well.
+              Bachani Farms has been farming this land for 25 years. Today our 25-person team looks after 100 acres of orchards, tunnels and fields, and every crop is grown by people who know it well.
             </p>
             <Link href="/about" className="text-forest font-semibold hover:text-leaf transition-colors">
               Read Our Story →
@@ -468,7 +468,7 @@ export default function HomePage() {
             </Link>
             <div className="mt-8 space-y-4">
               {[
-                { icon: Droplets, text: '[Irrigation method] across [00] acres' },
+                { icon: Droplets, text: '[Irrigation method] across 100 acres' },
                 { icon: Sprout, text: 'Crop rotation on our open fields' },
                 { icon: Handshake, text: 'Soil tested every [season]' },
               ].map((item, i) => {

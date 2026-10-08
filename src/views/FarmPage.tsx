@@ -49,11 +49,11 @@ export default function FarmPage() {
             How the farm works
           </h1>
           <p className="text-lg text-stone max-w-xl mb-12">
-            From orchards and plantations to tunnels and open fields, here is how we grow across [00] acres.
+            From orchards and plantations to tunnels and open fields, here is how we grow across 100 acres.
           </p>
           <StatCounter
             stats={[
-              { value: '[00]', label: 'Acres' },
+              { value: '100', label: 'Acres' },
               { value: '6', label: 'Main crops' },
               { value: '[00]', label: 'Tunnels' },
               { value: '[00]', label: 'Tubewells' },

@@ -1,8 +1,8 @@
 const proofItems = [
-  { value: '[00]', label: 'ACRES UNDER CULTIVATION' },
+  { value: '100', label: 'ACRES UNDER CULTIVATION' },
   { value: '6', label: 'CROPS' },
-  { value: '[00]+', label: 'YEARS OF FARMING' },
-  { value: 'EXPORT', label: 'BUYERS SUPPLIED' },
+  { value: '25', label: 'YEARS OF FARMING' },
+  { value: '25', label: 'PEOPLE ON THE TEAM' },
 ];
 
 interface ProofStripProps {
