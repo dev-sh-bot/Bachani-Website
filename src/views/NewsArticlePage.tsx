@@ -84,11 +84,11 @@ export default function NewsArticlePage({ slug }: { slug: string }) {
 
             {/* Hero image */}
             {img && (
-              <figure className="mb-10 rounded-[24px] overflow-hidden aspect-video bg-sage">
+              <figure className="motion-card mb-10 rounded-[24px] overflow-hidden aspect-video bg-sage">
                 <img
                   src={img.url}
                   alt={img.alt}
-                  className="w-full h-full object-cover"
+                  className="card-media w-full h-full object-cover"
                   loading="eager"
                   width={680}
                   height={382}
@@ -136,11 +136,11 @@ export default function NewsArticlePage({ slug }: { slug: string }) {
                   const bImg = images[block.imageKey];
                   return bImg ? (
                     <figure key={i} className="my-8">
-                      <div className="rounded-[20px] overflow-hidden aspect-[3/2] bg-sage">
+                      <div className="motion-card rounded-[20px] overflow-hidden aspect-[3/2] bg-sage">
                         <img
                           src={bImg.url}
                           alt={bImg.alt}
-                          className="w-full h-full object-cover"
+                          className="card-media w-full h-full object-cover"
                           loading="lazy"
                           width={680}
                           height={453}

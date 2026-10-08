@@ -5,6 +5,7 @@ import Eyebrow from '../components/Eyebrow';
 import HarvestAlmanac from '../components/HarvestAlmanac';
 import { crops, type Crop } from '../data/crops';
 import { images } from '../data/images';
+import { farmStats } from '../data/site';
 
 const FILTERS = ['All', 'Fruit', 'Vegetable', 'Field crop'] as const;
 type Filter = typeof FILTERS[number];
@@ -63,12 +64,12 @@ export default function CropsPage() {
                 key={crop.slug}
                 className={`group flex flex-col md:flex-row gap-10 py-16 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className="w-full md:w-1/2 rounded-[32px] overflow-hidden aspect-[4/3] bg-sage">
+                <div className="motion-card w-full md:w-1/2 rounded-[32px] overflow-hidden aspect-[4/3] bg-sage">
                   {img && (
                     <img
                       src={img.url}
                       alt={img.alt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03] group-hover:-rotate-1"
+                      className="card-media w-full h-full object-cover"
                       loading="lazy"
                       width={700}
                       height={525}
@@ -133,7 +134,7 @@ export default function CropsPage() {
               Crops grown at Bachani Farms
             </h2>
             <p className="text-base text-stone leading-relaxed">
-              Bachani Farms grows mango, banana, papaya, cucumber, sugarcane and wheat across 100 acres in [District], Pakistan. Each crop follows its own season, and we supply our harvest under contract to trusted buyers in Pakistan and abroad.
+              Bachani Farms grows mango, banana, papaya, cucumber, sugarcane and wheat across {farmStats.acres} acres in [District], Pakistan. Each crop follows its own season, and we supply our harvest under contract to trusted buyers in Pakistan and abroad.
             </p>
           </div>
         </div>

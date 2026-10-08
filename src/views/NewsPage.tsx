@@ -42,7 +42,7 @@ export default function NewsPage() {
         <div className="max-w-[1320px] mx-auto">
           <Link
             href={`/news/${featured.slug}`}
-            className="group grid md:grid-cols-2 gap-0 rounded-[32px] overflow-hidden bg-white border hover:shadow-xl transition-all duration-300"
+            className="motion-card group grid md:grid-cols-2 gap-0 rounded-[32px] overflow-hidden bg-white border"
             style={{ borderColor: '#DCE3D2' }}
           >
             <div className="aspect-[4/3] bg-sage overflow-hidden">
@@ -50,7 +50,7 @@ export default function NewsPage() {
                 <img
                   src={featuredImg.url}
                   alt={featuredImg.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="card-media w-full h-full object-cover"
                   loading="eager"
                   width={700}
                   height={525}

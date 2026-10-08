@@ -1,6 +1,12 @@
+export const farmStats = {
+  acres: 100,
+  yearsOfFarming: 25,
+  teamMembers: 25,
+} as const;
+
 export const site = {
   name: 'Bachani Farms',
-  tagline: 'Growing mango, banana, papaya, cucumber, sugarcane and wheat on 100 acres in [District], Pakistan.',
+  tagline: `Growing mango, banana, papaya, cucumber, sugarcane and wheat on ${farmStats.acres} acres in [District], Pakistan.`,
   address: 'Farm address, [District], [Province], Pakistan',
   district: '[District]',
   province: '[Province]',

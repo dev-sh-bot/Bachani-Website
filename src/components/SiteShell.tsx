@@ -2,6 +2,7 @@
 
 import Header from './Header';
 import Footer from './Footer';
+import CardMotion from './CardMotion';
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   return (
@@ -21,6 +22,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       </main>
 
       <Footer />
+      <CardMotion />
     </div>
   );
 }

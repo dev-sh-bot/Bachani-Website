@@ -14,6 +14,7 @@ import Marquee from '../components/Marquee';
 import ProcessSteps from '../components/ProcessSteps';
 import { crops } from '../data/crops';
 import { images } from '../data/images';
+import { farmStats } from '../data/site';
 import { faqs } from '../data/faqs';
 import { news } from '../data/news';
 import NewsCard from '../components/NewsCard';
@@ -35,7 +36,8 @@ function InHarvestNow({ className = '' }: { className?: string }) {
 
   return (
     <div
-      className={`rounded-2xl p-3.5 sm:p-4 shadow-xl ${className}`}
+      className={`motion-card rounded-2xl p-3.5 sm:p-4 shadow-xl ${className}`}
+      data-card-motion="soft"
       style={{ backgroundColor: '#FBFAF5' }}
     >
       <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold-ink mb-1.5">
@@ -186,7 +188,7 @@ export default function HomePage() {
           >
             We are a working farm first. Every mango, cucumber, banana and stalk of wheat starts with soil we know, water we plan for, and a team that shows up in every season. Bachani Farms grows{' '}
             <strong className="font-semibold" style={{ color: '#0B5828' }}>six crops</strong>{' '}
-            across 100 acres in [District], and supplies them{' '}
+            across {farmStats.acres} acres in [District], and supplies them{' '}
             <strong className="font-semibold" style={{ color: '#0B5828' }}>under contract</strong>{' '}
             to buyers who take them to markets in Pakistan and around the world.
           </p>
@@ -256,13 +258,13 @@ export default function HomePage() {
               return (
                 <article
                   key={crop.slug}
-                  className={`group relative rounded-[24px] overflow-hidden bg-sage ${bentoClass[crop.slug] ?? ''}`}
+                  className={`motion-card group relative rounded-[24px] overflow-hidden bg-sage ${bentoClass[crop.slug] ?? ''}`}
                 >
                   {img && (
                     <img
                       src={img.url}
                       alt={img.alt}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      className="card-media absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
                       width={500}
                       height={500}
@@ -330,10 +332,10 @@ export default function HomePage() {
               return (
                 <div
                   key={i}
-                  className="p-6 rounded-[24px] bg-white border"
+                  className="motion-card p-6 rounded-[24px] bg-white border"
                   style={{ borderColor: '#DCE3D2' }}
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: '#EEF3E6' }}>
+                  <div className="card-icon w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: '#EEF3E6' }}>
                     <Icon size={20} strokeWidth={1.5} style={{ color: '#0B5828' }} />
                   </div>
                   <h3 className="font-display text-lg font-semibold mb-2" style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}>
@@ -402,12 +404,12 @@ export default function HomePage() {
         aria-labelledby="about-teaser-heading"
       >
         <div className="max-w-[1320px] mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="rounded-[32px] overflow-hidden aspect-[4/3] bg-sage">
+          <div className="motion-card rounded-[32px] overflow-hidden aspect-[4/3] bg-sage">
             {farmTeamImg && (
               <img
                 src={farmTeamImg.url}
                 alt={farmTeamImg.alt}
-                className="w-full h-full object-cover"
+                className="card-media w-full h-full object-cover"
                 loading="lazy"
                 width={700}
                 height={525}
@@ -424,7 +426,9 @@ export default function HomePage() {
               The people behind the farm
             </h2>
             <p className="text-base text-stone leading-relaxed mb-6">
-              Bachani Farms has been farming this land for 25 years. Today our 25-person team looks after 100 acres of orchards, tunnels and fields, and every crop is grown by people who know it well.
+              Bachani Farms has been farming this land for {farmStats.yearsOfFarming} years.
+              Today our team of {farmStats.teamMembers} people looks after {farmStats.acres} acres
+              of orchards, tunnels and fields, and every crop is grown by people who know it well.
             </p>
             <Link href="/about" className="text-forest font-semibold hover:text-leaf transition-colors">
               Read Our Story →
@@ -433,9 +437,9 @@ export default function HomePage() {
               <StatCounter
                 stats={[
                   { value: '6', label: 'Main crops' },
-                  { value: '[00]', label: 'Acres' },
-                  { value: '[00]', label: 'Years of farming' },
-                  { value: '[00]', label: 'Tunnels' },
+                  { value: String(farmStats.acres), label: 'Acres' },
+                  { value: String(farmStats.yearsOfFarming), label: 'Years of farming' },
+                  { value: String(farmStats.teamMembers), label: 'Team members' },
                 ]}
               />
             </div>
@@ -467,7 +471,7 @@ export default function HomePage() {
             </Link>
             <div className="mt-8 space-y-4">
               {[
-                { icon: Droplets, text: '[Irrigation method] across 100 acres' },
+                { icon: Droplets, text: `[Irrigation method] across ${farmStats.acres} acres` },
                 { icon: Sprout, text: 'Crop rotation on our open fields' },
                 { icon: Handshake, text: 'Soil tested every [season]' },
               ].map((item, i) => {
@@ -483,12 +487,12 @@ export default function HomePage() {
               })}
             </div>
           </div>
-          <div className="rounded-[32px] overflow-hidden aspect-[4/3] bg-sage mt-6 md:mt-0">
+          <div className="motion-card rounded-[32px] overflow-hidden aspect-[4/3] bg-sage mt-6 md:mt-0">
             {irrigationImg && (
               <img
                 src={irrigationImg.url}
                 alt={irrigationImg.alt}
-                className="w-full h-full object-cover"
+                className="card-media w-full h-full object-cover"
                 loading="lazy"
                 width={700}
                 height={525}
@@ -585,31 +589,31 @@ export default function HomePage() {
             `}</style>
             {[
               {
-                src: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=800&h=600&fit=crop&auto=format',
-                alt: 'Mango orchard at sunrise',
-                caption: 'Mango orchard at sunrise',
+                src: images['mangoOrchard'].url,
+                alt: images['mangoOrchard'].alt,
+                caption: 'Mangoes growing in the orchard',
                 cls: 'gmosaic-large',
               },
               {
-                src: 'https://images.unsplash.com/photo-1776285759652-8f0ebbad1619?w=400&h=280&fit=crop&auto=format',
-                alt: 'Inside a growing tunnel',
-                caption: 'Inside a growing tunnel',
+                src: images['cucumberTunnel'].url,
+                alt: images['cucumberTunnel'].alt,
+                caption: 'Cucumber vines inside a tunnel',
                 cls: '',
               },
               {
-                src: 'https://images.unsplash.com/photo-1775619427924-16ff07cf2f2e?w=400&h=280&fit=crop&auto=format',
-                alt: 'Sugarcane field in full growth',
+                src: images['sugarcane'].url,
+                alt: images['sugarcane'].alt,
                 caption: 'Sugarcane in full growth',
                 cls: '',
               },
               {
-                src: 'https://images.unsplash.com/photo-1595024600400-2a49b9fce270?w=400&h=280&fit=crop&auto=format',
+                src: images['wheat'].url,
                 alt: 'Wheat field under blue sky',
                 caption: 'Wheat field at harvest',
                 cls: '',
               },
               {
-                src: 'https://images.unsplash.com/photo-1569959808474-debc539b72aa?w=400&h=280&fit=crop&auto=format',
+                src: images['papaya'].url,
                 alt: 'Papaya trees with ripening fruit',
                 caption: 'Papaya plantation',
                 cls: '',
@@ -617,18 +621,18 @@ export default function HomePage() {
             ].map((photo, i) => (
               <div
                 key={i}
-                className={`group relative overflow-hidden rounded-[24px] bg-sage ${photo.cls}`}
+                className={`motion-card group relative overflow-hidden rounded-[24px] bg-sage ${photo.cls}`}
               >
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="card-media w-full h-full object-cover"
                   loading="lazy"
                   width={i === 0 ? 800 : 400}
                   height={i === 0 ? 600 : 280}
                 />
                 <div
-                  className="absolute inset-x-0 bottom-0 px-4 py-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                  className="card-caption absolute inset-x-0 bottom-0 px-4 py-4"
                   style={{ background: 'linear-gradient(to top, rgba(6,47,23,0.85), transparent)' }}
                 >
                   <p className="font-mono text-[11px] text-white uppercase tracking-[0.1em]">{photo.caption}</p>

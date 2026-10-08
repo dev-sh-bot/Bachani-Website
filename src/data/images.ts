@@ -6,6 +6,14 @@ export interface ImageData {
   focalPoint?: string;
 }
 
+const cropPhotoUrls = {
+  mangoOrchard: 'https://images.unsplash.com/photo-1781673232370-ece15536d3d3?w=1200&h=900&fit=crop&auto=format',
+  mangoHarvest: 'https://images.unsplash.com/photo-1605027990121-cbae9e0642df?w=1200&h=900&fit=crop&auto=format',
+  cucumberTunnel: '/images/gallery/cucumber-tunnel.webp',
+  sugarcaneField: 'https://images.unsplash.com/photo-1606707761700-86b58f251a01?w=1200&h=900&fit=crop&auto=format',
+  sugarcaneHarvest: '/images/gallery/sugarcane-harvest.webp',
+} as const;
+
 export const images: Record<string, ImageData> = {
   hero: {
     key: 'hero',
@@ -22,8 +30,8 @@ export const images: Record<string, ImageData> = {
   },
   mangoOrchard: {
     key: 'mangoOrchard',
-    url: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=900&h=700&fit=crop&auto=format',
-    alt: 'Rows of mango trees stretching across the Bachani Farms orchard',
+    url: cropPhotoUrls.mangoOrchard,
+    alt: 'Green mangoes growing among the leaves of an orchard tree',
     aspectRatio: '4/3',
   },
   mangoHarvest: {
@@ -64,32 +72,32 @@ export const images: Record<string, ImageData> = {
   },
   cucumber: {
     key: 'cucumber',
-    url: 'https://images.unsplash.com/photo-1776285759652-8f0ebbad1619?w=900&h=700&fit=crop&auto=format',
-    alt: 'Rows of plants growing inside a tunnel greenhouse at Bachani Farms',
+    url: cropPhotoUrls.cucumberTunnel,
+    alt: 'Cucumbers growing on trellised vines inside a farm tunnel',
     aspectRatio: '4/3',
   },
   cucumberTunnel: {
     key: 'cucumberTunnel',
-    url: 'https://images.unsplash.com/photo-1523284998774-f6d3960be911?w=900&h=700&fit=crop&auto=format',
-    alt: 'Inside a farm greenhouse tunnel with crop rows stretching to the end',
+    url: cropPhotoUrls.cucumberTunnel,
+    alt: 'Rows of cucumber vines bearing fruit inside a farm tunnel',
     aspectRatio: '4/3',
   },
   cucumberFresh: {
     key: 'cucumberFresh',
     url: 'https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=900&h=600&fit=crop&auto=format',
-    alt: 'Cucumber vines heavy with fruit growing on trellises in the tunnel',
+    alt: 'Freshly picked green cucumbers ready for sorting',
     aspectRatio: '3/2',
   },
   sugarcane: {
     key: 'sugarcane',
-    url: 'https://images.unsplash.com/photo-1775619427924-16ff07cf2f2e?w=900&h=700&fit=crop&auto=format',
-    alt: 'Tall green sugarcane stalks growing in an open field under blue sky',
+    url: cropPhotoUrls.sugarcaneField,
+    alt: 'Tall sugarcane stalks growing in rows beside an open field',
     aspectRatio: '4/3',
   },
   sugarcaneHarvest: {
     key: 'sugarcaneHarvest',
-    url: 'https://images.unsplash.com/photo-1606707761700-86b58f251a01?w=900&h=600&fit=crop&auto=format',
-    alt: 'Sugarcane growing in a wide open field at Bachani Farms',
+    url: cropPhotoUrls.sugarcaneHarvest,
+    alt: 'Harvested sugarcane loaded on a trailer ready for the mill',
     aspectRatio: '3/2',
   },
   wheat: {
@@ -106,14 +114,14 @@ export const images: Record<string, ImageData> = {
   },
   farmTeam: {
     key: 'farmTeam',
-    url: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=900&h=700&fit=crop&auto=format',
-    alt: 'The Bachani Farms team working together in the fields',
+    url: cropPhotoUrls.mangoOrchard,
+    alt: 'Mango fruit growing on the orchard trees cared for by the farm team',
     aspectRatio: '4/3',
   },
   farmTeamWork: {
     key: 'farmTeamWork',
-    url: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1200&h=600&fit=crop&auto=format',
-    alt: 'Farm workers tending to crops across the fields at Bachani Farms',
+    url: cropPhotoUrls.sugarcaneHarvest,
+    alt: 'Cut sugarcane loaded on a trailer beside the crop fields',
     aspectRatio: '2/1',
   },
   farmOverview: {
@@ -124,26 +132,26 @@ export const images: Record<string, ImageData> = {
   },
   irrigation: {
     key: 'irrigation',
-    url: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&h=600&fit=crop&auto=format',
-    alt: 'Irrigation channels running between farm fields at Bachani Farms',
+    url: cropPhotoUrls.cucumberTunnel,
+    alt: 'Drip irrigation lines along rows of fruiting cucumber vines',
     aspectRatio: '3/2',
   },
   harvest: {
     key: 'harvest',
-    url: 'https://images.unsplash.com/photo-1680791335171-4f169206b066?w=1200&h=700&fit=crop&auto=format',
-    alt: 'Freshly harvested mango bunches ready for sorting at Bachani Farms',
+    url: cropPhotoUrls.mangoHarvest,
+    alt: 'Freshly harvested ripe mangoes ready for sorting',
     aspectRatio: '16/9',
   },
   orchard: {
     key: 'orchard',
-    url: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=1200&h=700&fit=crop&auto=format',
-    alt: 'Mango orchard rows at sunrise at Bachani Farms',
+    url: cropPhotoUrls.mangoOrchard,
+    alt: 'Mangoes growing on a tree in the orchard',
     aspectRatio: '16/9',
   },
   tunnelInside: {
     key: 'tunnelInside',
-    url: 'https://images.unsplash.com/photo-1523284998774-f6d3960be911?w=900&h=700&fit=crop&auto=format',
-    alt: 'Inside view of a farm tunnel greenhouse with long crop rows',
+    url: cropPhotoUrls.cucumberTunnel,
+    alt: 'Inside a farm tunnel with long rows of cucumber vines',
     aspectRatio: '4/3',
   },
   openField: {
@@ -152,16 +160,10 @@ export const images: Record<string, ImageData> = {
     alt: 'Open wheat field stretching to the horizon at Bachani Farms',
     aspectRatio: '4/3',
   },
-  farmOwner: {
-    key: 'farmOwner',
-    url: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&h=800&fit=crop&auto=format',
-    alt: 'Owner of Bachani Farms in the orchard',
-    aspectRatio: '3/4',
-  },
   packing: {
     key: 'packing',
-    url: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=900&h=600&fit=crop&auto=format',
-    alt: 'Produce being sorted and packed at Bachani Farms',
+    url: cropPhotoUrls.mangoHarvest,
+    alt: 'Harvested mangoes gathered for sorting and packing',
     aspectRatio: '3/2',
   },
   newsDefault: {
@@ -178,8 +180,8 @@ export const images: Record<string, ImageData> = {
   },
   newsTunnel: {
     key: 'newsTunnel',
-    url: 'https://images.unsplash.com/photo-1776285759652-8f0ebbad1619?w=800&h=500&fit=crop&auto=format',
-    alt: 'New growing tunnels at Bachani Farms',
+    url: cropPhotoUrls.cucumberTunnel,
+    alt: 'Cucumber plants growing inside a farm tunnel',
     aspectRatio: '16/10',
   },
   newsWheat: {
@@ -190,31 +192,31 @@ export const images: Record<string, ImageData> = {
   },
   newsSugarcane: {
     key: 'newsSugarcane',
-    url: 'https://images.unsplash.com/photo-1775619427924-16ff07cf2f2e?w=800&h=500&fit=crop&auto=format',
-    alt: 'Sugarcane harvest underway at Bachani Farms',
+    url: cropPhotoUrls.sugarcaneHarvest,
+    alt: 'Cut sugarcane loaded for transport during the harvest',
     aspectRatio: '16/10',
   },
   newsWater: {
     key: 'newsWater',
-    url: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=500&fit=crop&auto=format',
-    alt: 'Irrigation improvements at Bachani Farms',
+    url: cropPhotoUrls.cucumberTunnel,
+    alt: 'Irrigation lines watering cucumber plants inside a tunnel',
     aspectRatio: '16/10',
   },
   newsTeam: {
     key: 'newsTeam',
-    url: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=500&fit=crop&auto=format',
-    alt: 'The Bachani Farms team at work in the fields',
+    url: cropPhotoUrls.mangoOrchard,
+    alt: 'Fruit growing in the mango orchard tended by the farm team',
     aspectRatio: '16/10',
   },
   growOrchard: {
     key: 'growOrchard',
-    url: 'https://images.unsplash.com/photo-1781673232370-ece15536d3d3?w=800&h=1000&fit=crop&auto=format',
-    alt: 'Rows of fruit trees in a well-tended orchard',
+    url: cropPhotoUrls.mangoOrchard,
+    alt: 'Mango tree branches bearing green fruit in the orchard',
     aspectRatio: '4/5',
   },
   growTunnel: {
     key: 'growTunnel',
-    url: 'https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=800&h=1000&fit=crop&auto=format',
+    url: cropPhotoUrls.cucumberTunnel,
     alt: 'Cucumber plants growing on trellises inside a farm tunnel',
     aspectRatio: '4/5',
   },

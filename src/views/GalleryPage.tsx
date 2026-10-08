@@ -4,14 +4,15 @@ import { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import Eyebrow from '../components/Eyebrow';
 import { galleryItems } from '../data/gallery';
+import { images } from '../data/images';
 
-const FILTERS = ['All', 'Orchard', 'Tunnels', 'Fields', 'Harvest', 'People'] as const;
+const FILTERS = ['All', 'Orchard', 'Tunnels', 'Fields', 'Harvest'] as const;
 type Filter = typeof FILTERS[number];
 
 const videoCards = [
-  { title: 'Harvest day in the mango orchard', duration: '[02:34]', thumb: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&h=338&fit=crop&auto=format' },
-  { title: 'A walk through the tunnels', duration: '[01:48]', thumb: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=338&fit=crop&auto=format' },
-  { title: 'The farm from above', duration: '[03:12]', thumb: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=338&fit=crop&auto=format' },
+  { title: 'Harvest day in the mango orchard', duration: '[02:34]', thumb: images['mangoOrchard'].url },
+  { title: 'A walk through the tunnels', duration: '[01:48]', thumb: images['cucumberTunnel'].url },
+  { title: 'Wheat fields through the season', duration: '[03:12]', thumb: images['wheat'].url },
 ];
 
 export default function GalleryPage() {
@@ -73,6 +74,7 @@ export default function GalleryPage() {
               key={f}
               type="button"
               onClick={() => setFilter(f)}
+              aria-pressed={filter === f}
               className="px-5 py-2 rounded-full text-sm font-medium transition-colors"
               style={{
                 backgroundColor: filter === f ? '#0B5828' : '#EEF3E6',
@@ -87,25 +89,27 @@ export default function GalleryPage() {
 
       {/* Masonry grid */}
       <section className="px-5 md:px-8 pb-16" style={{ backgroundColor: '#FBFAF5' }} aria-label="Photo gallery">
-        <div className="max-w-[1320px] mx-auto columns-1 md:columns-3 lg:columns-4 gap-4 space-y-4">
+        <div key={filter} className="gallery-grid max-w-[1320px] mx-auto columns-1 md:columns-3 lg:columns-4 gap-4 space-y-4">
           {displayed.map((item, i) => (
             <button
               key={item.key}
               type="button"
               onClick={() => setLightbox(i)}
-              className="group block w-full rounded-[20px] overflow-hidden bg-sage break-inside-avoid cursor-pointer focus-visible:outline-2 focus-visible:outline-forest focus-visible:outline-offset-2"
+              className="motion-card group block w-full rounded-[20px] overflow-hidden bg-sage break-inside-avoid cursor-pointer focus-visible:outline-2 focus-visible:outline-forest focus-visible:outline-offset-2"
               aria-label={`View photo: ${item.caption}`}
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden" style={{ aspectRatio: `${item.width} / ${item.height}` }}>
                 <img
                   src={item.url}
                   alt={item.alt}
-                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="card-media w-full h-full object-cover"
                   loading="lazy"
-                  width={400}
+                  decoding="async"
+                  width={item.width}
+                  height={item.height}
                 />
                 <div
-                  className="absolute inset-x-0 bottom-0 px-4 py-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
+                  className="card-caption absolute inset-x-0 bottom-0 px-4 py-4"
                   style={{ background: 'linear-gradient(to top, rgba(6,47,23,0.8), transparent)' }}
                 >
                   <p className="font-mono text-[10px] text-white uppercase tracking-[0.1em]">{item.caption}</p>
@@ -128,11 +132,11 @@ export default function GalleryPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {videoCards.map((video, i) => (
-              <div key={i} className="group rounded-[20px] overflow-hidden bg-sage relative aspect-video cursor-pointer">
+              <div key={i} className="motion-card group rounded-[20px] overflow-hidden bg-sage relative aspect-video cursor-pointer">
                 <img
                   src={video.thumb}
                   alt={video.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="card-media w-full h-full object-cover"
                   loading="lazy"
                   width={600}
                   height={338}
@@ -142,7 +146,7 @@ export default function GalleryPage() {
                   style={{ background: 'rgba(6,47,23,0.4)' }}
                 >
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"
+                    className="card-icon w-14 h-14 rounded-full flex items-center justify-center mb-3"
                     style={{ backgroundColor: 'rgba(251,250,245,0.9)' }}
                   >
                     <Play size={20} strokeWidth={1.5} style={{ color: '#062F17', marginLeft: '2px' }} />

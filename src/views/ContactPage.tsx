@@ -31,7 +31,7 @@ export default function ContactPage() {
   return (
     <section className="min-h-[80vh] px-5 md:px-8 pt-32 md:pt-36 pb-20" style={{ backgroundColor: '#FBFAF5' }}>
       <div className="max-w-[1120px] mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-        <div className="p-6 md:p-8 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
+        <div className="motion-card p-6 md:p-8 rounded-[24px] bg-white border" data-card-motion="soft" style={{ borderColor: '#DCE3D2' }}>
           {submitted ? (
             <div className="text-center py-12">
               <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: '#EEF3E6' }}>
@@ -68,15 +68,15 @@ export default function ContactPage() {
         </div>
 
         <div className="space-y-5">
-          <div className="p-6 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
+          <div className="motion-card p-6 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
             <div className="flex items-center gap-3 mb-3">
-              <MapPin size={19} strokeWidth={1.5} style={{ color: '#0B5828' }} />
+              <MapPin size={19} strokeWidth={1.5} className="card-icon" style={{ color: '#0B5828' }} />
               <h2 className="font-display text-xl font-semibold" style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}>Farm address</h2>
             </div>
             <p className="text-sm text-stone leading-relaxed">{site.address}</p>
             <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex mt-4 px-5 py-2 rounded-full text-sm font-medium" style={{ backgroundColor: '#0B5828', color: '#FBFAF5' }}>Get directions</a>
           </div>
-          <div className="rounded-[24px] overflow-hidden border bg-sage h-[320px] md:h-[420px]" style={{ borderColor: '#DCE3D2' }}>
+          <div className="motion-card rounded-[24px] overflow-hidden border bg-sage h-[320px] md:h-[420px]" data-card-motion="soft" style={{ borderColor: '#DCE3D2' }}>
             <iframe title="Map showing the Bachani Farms address" src={mapUrl} className="w-full h-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
         </div>

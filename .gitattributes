@@ -147,3 +147,9 @@
 
 # Keep the site logo directly available to deployment platforms.
 public/bachani-logo.png -filter -diff -merge -text
+
+# Keep generated gallery photos directly available to deployment platforms.
+public/images/gallery/*.webp -filter -diff -merge -text
+
+# Keep the supplied About Us photos directly available to deployment platforms.
+public/images/about/*.webp -filter -diff -merge -text

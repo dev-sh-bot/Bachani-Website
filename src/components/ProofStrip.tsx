@@ -1,8 +1,10 @@
+import { farmStats } from '../data/site';
+
 const proofItems = [
-  { value: '100', label: 'ACRES UNDER CULTIVATION' },
+  { value: String(farmStats.acres), label: 'ACRES UNDER CULTIVATION' },
   { value: '6', label: 'CROPS' },
-  { value: '25', label: 'YEARS OF FARMING' },
-  { value: '25', label: 'PEOPLE ON THE TEAM' },
+  { value: String(farmStats.yearsOfFarming), label: 'YEARS OF FARMING' },
+  { value: String(farmStats.teamMembers), label: 'PEOPLE ON THE TEAM' },
 ];
 
 interface ProofStripProps {

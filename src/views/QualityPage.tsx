@@ -87,12 +87,12 @@ export default function QualityPage() {
 
       {/* Hero image */}
       <div className="px-4 md:px-8 pb-8">
-        <div className="max-w-[1320px] mx-auto rounded-[32px] overflow-hidden aspect-[21/9] bg-sage">
+        <div className="motion-card max-w-[1320px] mx-auto rounded-[32px] overflow-hidden aspect-[21/9] bg-sage">
           {harvestImg && (
             <img
               src={harvestImg.url}
               alt={harvestImg.alt}
-              className="w-full h-full object-cover"
+              className="card-media w-full h-full object-cover"
               loading="lazy"
               width={1320}
               height={566}
@@ -191,8 +191,8 @@ export default function QualityPage() {
             {qualityChecks.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="p-6 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
-                  <Icon size={20} strokeWidth={1.5} className="mb-4" style={{ color: '#0B5828' }} />
+                <div key={i} className="motion-card p-6 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
+                  <Icon size={20} strokeWidth={1.5} className="card-icon mb-4" style={{ color: '#0B5828' }} />
                   <h3 className="font-body font-semibold text-base text-ink mb-2">{item.title}</h3>
                   <p className="text-sm text-stone">{item.body}</p>
                 </div>

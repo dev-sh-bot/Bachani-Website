@@ -3,6 +3,7 @@
 import Eyebrow from '../components/Eyebrow';
 import Button from '../components/Button';
 import { images } from '../data/images';
+import { farmStats } from '../data/site';
 
 const pillars = [
   {
@@ -26,7 +27,7 @@ const pillars = [
   {
     label: 'PEOPLE',
     title: 'A farm that gives back.',
-    body: 'We provide work to [00] people through the seasons, and we keep the workplace safe and fair. [Add training, housing or community work if applicable.]',
+    body: `Our team of ${farmStats.teamMembers} people cares for the farm through the seasons, and we keep the workplace safe and fair.`,
     imageKey: 'farmTeam',
   },
 ];
@@ -53,12 +54,12 @@ export default function SustainabilityPage() {
 
       {/* Hero image */}
       <div className="px-4 md:px-8 pb-8">
-        <div className="max-w-[1320px] mx-auto rounded-[32px] overflow-hidden aspect-[21/9] bg-sage">
+        <div className="motion-card max-w-[1320px] mx-auto rounded-[32px] overflow-hidden aspect-[21/9] bg-sage">
           {images['irrigation'] && (
             <img
               src={images['irrigation'].url}
               alt={images['irrigation'].alt}
-              className="w-full h-full object-cover"
+              className="card-media w-full h-full object-cover"
               loading="lazy"
               width={1320}
               height={566}
@@ -77,12 +78,12 @@ export default function SustainabilityPage() {
                 key={i}
                 className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}
               >
-                <div className={`rounded-[32px] overflow-hidden aspect-[4/3] bg-sage ${i % 2 === 1 ? 'md:col-start-2' : ''}`}>
+                <div className={`motion-card rounded-[32px] overflow-hidden aspect-[4/3] bg-sage ${i % 2 === 1 ? 'md:col-start-2' : ''}`}>
                   {images[pillar.imageKey] && (
                     <img
                       src={images[pillar.imageKey].url}
                       alt={images[pillar.imageKey].alt}
-                      className="w-full h-full object-cover"
+                      className="card-media w-full h-full object-cover"
                       loading="lazy"
                       width={700}
                       height={525}
@@ -122,7 +123,7 @@ export default function SustainabilityPage() {
             {[
               { value: '[00]%', label: 'of our fruit area on [drip] irrigation' },
               { value: '[00]', label: 'acres in crop rotation each year' },
-              { value: '[00]', label: 'people employed through the year' },
+              { value: String(farmStats.teamMembers), label: 'people on our team' },
               { value: '[Goal]', label: 'Add your own sustainability goal here' },
             ].map((item, i) => (
               <div key={i} className="text-center">

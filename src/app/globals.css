@@ -77,10 +77,101 @@ body {
   animation: shimmer 1.5s infinite;
 }
 
+.motion-card {
+  --card-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  isolation: isolate;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 560ms var(--card-ease) var(--card-reveal-delay, 0ms),
+    translate 560ms var(--card-ease) var(--card-reveal-delay, 0ms),
+    transform 420ms var(--card-ease),
+    box-shadow 420ms var(--card-ease);
+}
+
+/* Only prepare cards outside the viewport; visible cards never blink on hydration. */
+.motion-card[data-card-motion-state='pending'] {
+  opacity: 0;
+  translate: 0 14px;
+  transition: none;
+}
+
+.motion-card .card-media {
+  transform: scale(1) translateZ(0);
+  transition: transform 680ms var(--card-ease);
+}
+
+.motion-card .card-icon {
+  transition: transform 420ms var(--card-ease);
+}
+
+.motion-card:not([data-card-motion='soft']):focus-visible {
+  transform: translate3d(0, -3px, 0);
+  box-shadow: 0 12px 28px -14px rgb(6 47 23 / 18%);
+}
+
+.motion-card:focus-visible .card-media {
+  transform: scale(1.025) translateZ(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-card:not([data-card-motion='soft']):hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: 0 12px 28px -14px rgb(6 47 23 / 18%);
+  }
+
+  .motion-card:hover .card-media {
+    transform: scale(1.025) translateZ(0);
+  }
+
+  .motion-card:hover .card-icon {
+    transform: translate3d(0, -1px, 0);
+  }
+}
+
+.motion-card .card-caption {
+  opacity: 0;
+  transform: translate3d(0, 6px, 0);
+  transition: opacity 420ms var(--card-ease), transform 420ms var(--card-ease);
+}
+
+.motion-card:is(:hover, :focus-visible) .card-caption {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes gallery-filter-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gallery-grid {
+  animation: gallery-filter-enter 360ms ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-card,
+  .motion-card .card-media,
+  .motion-card .card-icon,
+  .motion-card .card-caption {
+    animation: none !important;
+    transform: none !important;
+    translate: none !important;
+    scale: none !important;
+    transition: none !important;
+  }
+
+  .motion-card {
+    opacity: 1 !important;
   }
 }

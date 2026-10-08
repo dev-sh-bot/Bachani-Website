@@ -12,12 +12,12 @@ interface CropCardProps {
 export default function CropCard({ crop }: CropCardProps) {
   const img = images[crop.imageKey] || images['mango'];
   return (
-    <article className="group block bg-white rounded-[24px] overflow-hidden border" style={{ borderColor: '#DCE3D2' }}>
+    <article className="motion-card group block bg-white rounded-[24px] overflow-hidden border" style={{ borderColor: '#DCE3D2' }}>
       <div className="overflow-hidden aspect-[4/3] bg-sage">
         <img
           src={img.url}
           alt={img.alt}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="card-media w-full h-full object-cover"
           loading="lazy"
           width={400}
           height={300}

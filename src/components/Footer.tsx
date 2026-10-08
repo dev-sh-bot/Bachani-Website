@@ -1,72 +1,113 @@
 import Link from 'next/link';
-import { site } from '../data/site';
+import { ArrowUp, ArrowUpRight } from 'lucide-react';
+import { site, farmStats } from '../data/site';
 import { crops } from '../data/crops';
 import Logo from './Logo';
+
+const pageColumns = [
+  [
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Crops', href: '/crops' },
+    { label: 'Our Farm', href: '/farm' },
+    { label: 'Quality and Packing', href: '/farm/quality' },
+  ],
+  [
+    { label: 'Sustainability', href: '/farm/sustainability' },
+    { label: 'News', href: '/news' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact Us', href: '/contact' },
+  ],
+];
 
 export default function Footer() {
   return (
     <footer
-      className="pb-10"
-      style={{ backgroundColor: '#062F17', borderTop: '1px solid rgba(220,227,210,0.2)' }}
+      className="border-t border-gold/25 bg-forest-deep text-paper"
       aria-label="Site footer"
     >
-      <div className="max-w-[1320px] mx-auto px-5 md:px-8 pt-10 md:pt-16 pb-10">
-        <div className="grid md:grid-cols-3 gap-10 mb-12 md:mb-16 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
-            <Link href="/" className="inline-block mb-4" aria-label="Bachani Farms home">
-              <Logo height={48} onDark />
+      <div className="mx-auto max-w-[1320px] px-5 md:px-8">
+        <div className="grid items-start gap-10 py-10 md:grid-cols-2 lg:grid-cols-[1fr_1.15fr_0.9fr] lg:gap-12 lg:py-12">
+          <div className="md:col-span-2 lg:col-span-1">
+            <Link
+              href="/"
+              className="inline-flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              aria-label={`${site.name} home`}
+            >
+              <Logo height={44} onDark />
             </Link>
-            <p className="text-sm leading-relaxed max-w-sm" style={{ color: 'rgba(251,250,245,0.6)' }}>
-              Growing six crops across 100 acres in [District], Pakistan.
+            <h2 className="mt-5 font-display text-[28px] font-medium leading-tight tracking-[-0.02em]">
+              Growing with care.
+            </h2>
+            <p className="mt-3 max-w-[300px] text-sm leading-6 text-paper/65">
+              Six crops, {farmStats.acres} acres, and a family commitment to good farming in Pakistan.
             </p>
           </div>
 
-          <div className="flex flex-col items-center md:items-start">
-            <h2 className="font-mono text-[11px] uppercase tracking-[0.14em] mb-4" style={{ color: '#CAA549' }}>
+          <nav aria-labelledby="footer-explore-heading">
+            <h2 id="footer-explore-heading" className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-gold">
               Explore
             </h2>
-            <ul className="space-y-2.5">
-              {[
-                { label: 'Home', href: '/' },
-                { label: 'About Us', href: '/about' },
-                { label: 'Our Crops', href: '/crops' },
-                { label: 'Our Farm', href: '/farm' },
-                { label: 'Quality and Packing', href: '/farm/quality' },
-                { label: 'Sustainability', href: '/farm/sustainability' },
-                { label: 'News', href: '/news' },
-                { label: 'Gallery', href: '/gallery' },
-                { label: 'Contact Us', href: '/contact' },
-              ].map(item => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-sm hover:text-white transition-colors" style={{ color: 'rgba(251,250,245,0.65)' }}>
-                    {item.label}
-                  </Link>
-                </li>
+            <div className="grid grid-cols-2 gap-x-5 sm:gap-x-8">
+              {pageColumns.map((column, index) => (
+                <ul key={index} className="space-y-1">
+                  {column.map(item => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="inline-flex min-h-9 items-center rounded-sm py-1 text-sm leading-5 text-paper/75 transition-colors hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               ))}
-            </ul>
-          </div>
+            </div>
+          </nav>
 
-          <div className="flex flex-col items-center md:items-start">
-            <h2 className="font-mono text-[11px] uppercase tracking-[0.14em] mb-4" style={{ color: '#CAA549' }}>
+          <div className="motion-card rounded-[24px] border border-paper/10 bg-paper/[0.04] p-6">
+            <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-gold">
               Contact
             </h2>
-            <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'rgba(251,250,245,0.65)' }}>
-              {site.address}
+            <p className="mt-3 font-display text-2xl font-medium leading-tight tracking-[-0.02em]">
+              Let’s talk harvest.
             </p>
+            <p className="mt-3 text-sm leading-6 text-paper/65">
+              Get in touch for crop availability and supply enquiries.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-5 inline-flex min-h-11 items-center justify-between gap-7 rounded-full bg-paper px-5 py-2.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+            >
+              Contact Us
+              <ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" />
+            </Link>
           </div>
+        </div>
 
-          <div className="md:col-span-3 flex flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start pt-6" style={{ borderTop: '1px solid rgba(220,227,210,0.15)' }} aria-label="Crops grown at Bachani Farms">
+        <div className="flex flex-col gap-4 border-t border-paper/10 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-gold">
+            Grown on our farm
+          </p>
+          <ul className="flex flex-wrap gap-2" aria-label="Crops grown at Bachani Farms">
             {crops.map(crop => (
-              <span key={crop.slug} className="text-sm" style={{ color: 'rgba(251,250,245,0.55)' }}>{crop.name}</span>
+              <li key={crop.slug} className="rounded-full border border-paper/10 px-3 py-1.5 text-xs leading-4 text-paper/70">
+                {crop.name}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        <div className="font-display text-[clamp(3rem,10vw,8rem)] font-semibold leading-none tracking-[-0.02em] mb-10 opacity-10 text-center md:text-left" style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#FBFAF5' }} aria-hidden="true">
-          Bachani Farms
-        </div>
-        <div className="pt-6 text-center md:text-left" style={{ borderTop: '1px solid rgba(220,227,210,0.15)' }}>
-          <p className="text-xs" style={{ color: 'rgba(251,250,245,0.4)' }}>© 2026 Bachani Farms. All rights reserved.</p>
+        <div className="flex flex-col gap-3 border-t border-paper/10 py-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs leading-5 text-paper/50">© 2026 {site.name}. All rights reserved.</p>
+          <a
+            href="#main-content"
+            className="inline-flex min-h-9 w-fit items-center gap-2 rounded-sm text-xs text-paper/65 transition-colors hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+          >
+            Back to top
+            <ArrowUp size={14} strokeWidth={1.5} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>

@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import StatCounter from '../components/StatCounter';
 import { images } from '../data/images';
 import { crops } from '../data/crops';
+import { farmStats } from '../data/site';
 
 const markerData = [
   { num: 1, label: 'Mango orchard', desc: 'Rows of mango trees, the oldest part of the farm.' },
@@ -48,14 +49,14 @@ export default function FarmPage() {
             How the farm works
           </h1>
           <p className="text-lg text-stone max-w-xl mb-12">
-            From orchards and plantations to tunnels and open fields, here is how we grow across 100 acres.
+            From orchards and plantations to tunnels and open fields, here is how we grow across {farmStats.acres} acres.
           </p>
           <StatCounter
             stats={[
-              { value: '100', label: 'Acres' },
+              { value: String(farmStats.acres), label: 'Acres' },
               { value: '6', label: 'Main crops' },
-              { value: '[00]', label: 'Tunnels' },
-              { value: '[00]', label: 'Tubewells' },
+              { value: String(farmStats.yearsOfFarming), label: 'Years of farming' },
+              { value: String(farmStats.teamMembers), label: 'Team members' },
             ]}
           />
         </div>
@@ -75,7 +76,8 @@ export default function FarmPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Illustrated map placeholder */}
             <div
-              className="md:col-span-2 rounded-[32px] overflow-hidden aspect-video relative"
+              className="motion-card md:col-span-2 rounded-[32px] overflow-hidden aspect-video relative"
+              data-card-motion="soft"
               style={{ backgroundColor: '#FBFAF5', border: '1px solid #DCE3D2' }}
             >
               <svg viewBox="0 0 800 500" className="w-full h-full" aria-label="Illustrative farm layout map">
@@ -133,7 +135,7 @@ export default function FarmPage() {
                 <button
                   key={m.num}
                   type="button"
-                  className="w-full text-left p-4 rounded-[16px] bg-white border transition-colors hover:border-forest group"
+                  className="motion-card w-full text-left p-4 rounded-[16px] bg-white border transition-colors hover:border-forest group"
                   style={{ borderColor: '#DCE3D2' }}
                 >
                   <div className="flex items-start gap-3">
@@ -190,19 +192,19 @@ export default function FarmPage() {
                 key={i}
                 className={`grid md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}
               >
-                <div className={`rounded-[32px] overflow-hidden aspect-[4/3] bg-sage ${i % 2 === 1 ? 'md:col-start-2' : ''}`}>
+                <div className={`motion-card rounded-[32px] overflow-hidden aspect-[4/3] bg-sage ${i % 2 === 1 ? 'md:col-start-2' : ''}`}>
                   {images[method.imageKey] && (
                     <img
                       src={images[method.imageKey].url}
                       alt={images[method.imageKey].alt}
-                      className="w-full h-full object-cover"
+                      className="card-media w-full h-full object-cover"
                       loading="lazy"
                       width={700}
                       height={525}
                     />
                   )}
                 </div>
-                <div className="p-8 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
+                <div className="motion-card p-8 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
                   <h3
                     className="font-display text-2xl font-semibold mb-4"
                     style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}
@@ -242,8 +244,8 @@ export default function FarmPage() {
             {facilityCards.map((card, i) => {
               const Icon = card.icon;
               return (
-                <div key={i} className="p-6 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: '#EEF3E6' }}>
+                <div key={i} className="motion-card p-6 rounded-[24px] bg-white border" style={{ borderColor: '#DCE3D2' }}>
+                  <div className="card-icon w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: '#EEF3E6' }}>
                     <Icon size={20} strokeWidth={1.5} style={{ color: '#0B5828' }} />
                   </div>
                   <h3 className="font-display text-lg font-semibold mb-2" style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}>
@@ -287,12 +289,12 @@ export default function FarmPage() {
       {/* Team band */}
       <section className="py-24 md:py-32 px-5 md:px-8" style={{ backgroundColor: '#062F17' }}>
         <div className="max-w-[1320px] mx-auto">
-          <div className="rounded-[32px] overflow-hidden aspect-[21/9] bg-forest mb-12">
+          <div className="motion-card rounded-[32px] overflow-hidden aspect-[21/9] bg-forest mb-12">
             {images['farmTeamWork'] && (
               <img
                 src={images['farmTeamWork'].url}
                 alt={images['farmTeamWork'].alt}
-                className="w-full h-full object-cover opacity-80"
+                className="card-media w-full h-full object-cover opacity-80"
                 loading="lazy"
                 width={1320}
                 height={566}
