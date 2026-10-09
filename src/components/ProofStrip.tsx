@@ -14,13 +14,13 @@ interface ProofStripProps {
 export default function ProofStrip({ dark = false }: ProofStripProps) {
   return (
     <div
-      className="grid grid-cols-2 md:grid-cols-4"
+      className="grid grid-cols-2 lg:grid-cols-4"
       style={{ borderColor: dark ? 'rgba(220,227,210,0.2)' : '#DCE3D2' }}
     >
       {proofItems.map((item, i) => (
         <div
           key={i}
-          className={`py-5 px-6 text-center ${i > 0 ? 'border-l' : ''}`}
+          className={`py-5 px-6 text-center ${i % 2 === 1 ? 'border-l' : i > 0 ? 'lg:border-l' : ''} ${i >= 2 ? 'border-t lg:border-t-0' : ''}`}
           style={{ borderColor: dark ? 'rgba(220,227,210,0.2)' : '#DCE3D2' }}
         >
           <div

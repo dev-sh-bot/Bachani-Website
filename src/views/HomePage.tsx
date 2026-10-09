@@ -140,8 +140,8 @@ export default function HomePage() {
             </Button>
           </div>
 
-          {/* In-flow on mobile; floating on md+ */}
-          <InHarvestNow className="mt-6 w-full max-w-[200px] md:mt-0 md:absolute md:bottom-24 md:right-8 md:z-10" />
+          {/* Hidden on mobile; floating on md+ */}
+          <InHarvestNow className="hidden md:block md:absolute md:bottom-24 md:right-8 md:z-10" />
         </div>
 
         {/* Scroll indicator — hide on small phones to free space above action bar */}
@@ -157,7 +157,7 @@ export default function HomePage() {
 
       {/* Proof strip */}
       <div style={{ backgroundColor: '#FBFAF5' }}>
-        <div className="max-w-[1320px] mx-auto px-5 md:px-8 border-b" style={{ borderColor: '#DCE3D2' }}>
+        <div className="max-w-[1320px] mx-auto lg:px-8 border-b" style={{ borderColor: '#DCE3D2' }}>
           <ProofStrip />
         </div>
       </div>
