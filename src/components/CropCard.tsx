@@ -37,21 +37,25 @@ export default function CropCard({ crop }: CropCardProps) {
           {crop.name}
         </h3>
         {/* Month strip */}
-        <div className="flex gap-0.5 mb-3">
-          {MONTHS.map((m, i) => {
-            const month = i + 1;
-            const isHarvest = crop.harvestMonths.includes(month);
-            return (
-              <div key={i} className="flex flex-col items-center gap-0.5 flex-1">
-                <div
-                  className="h-1.5 w-full rounded-full"
-                  style={{ backgroundColor: isHarvest ? crop.accentColor : '#DCE3D2' }}
-                />
-                <span className="text-[8px] font-mono" style={{ color: '#4B584F' }}>{m}</span>
-              </div>
-            );
-          })}
-        </div>
+        {crop.harvestMonths.length > 0 ? (
+          <div className="flex gap-0.5 mb-3">
+            {MONTHS.map((m, i) => {
+              const month = i + 1;
+              const isHarvest = crop.harvestMonths.includes(month);
+              return (
+                <div key={i} className="flex flex-col items-center gap-0.5 flex-1">
+                  <div
+                    className="h-1.5 w-full rounded-full"
+                    style={{ backgroundColor: isHarvest ? crop.accentColor : '#DCE3D2' }}
+                  />
+                  <span className="text-[8px] font-mono" style={{ color: '#4B584F' }}>{m}</span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="mb-3 text-xs text-stone">Harvest dates to be confirmed</p>
+        )}
       </div>
     </article>
   );

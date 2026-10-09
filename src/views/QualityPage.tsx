@@ -55,9 +55,9 @@ const journeySteps = [
 ];
 
 const cropTable = [
-  { crop: 'Mango', picked: '[By hand]', packed: '[Crates]', handover: '[Buyer collects]' },
+  { crop: 'Mangoes', picked: '[By hand]', packed: '[Crates]', handover: '[Buyer collects]' },
   { crop: 'Banana', picked: '[By hand]', packed: '[Bunches/crates]', handover: '[Buyer collects]' },
-  { crop: 'Papaya', picked: '[By hand]', packed: '[Crates]', handover: '[Buyer collects]' },
+  { crop: 'Tomatoes', picked: '[By hand]', packed: '[Crates]', handover: '[Buyer collects]' },
   { crop: 'Cucumber', picked: '[By hand]', packed: '[Crates]', handover: '[Buyer collects]' },
   { crop: 'Sugarcane', picked: '[Cut by hand/machine]', packed: '[Loaded loose]', handover: '[Delivered to mill]' },
   { crop: 'Wheat', picked: '[Harvested by machine]', packed: '[Bags/bulk]', handover: '[Buyer collects]' },

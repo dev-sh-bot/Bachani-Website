@@ -4,7 +4,7 @@ import GalleryPage from '@/views/GalleryPage';
 export const metadata: Metadata = {
   title: 'Photo & Video Gallery | Life at Bachani Farms',
   description:
-    'Photos and short videos from Bachani Farms in [District], Pakistan: mango orchards, cucumber tunnels, wheat and sugarcane fields, harvest days and the farm team.',
+    'Photos and short videos from Bachani Farms in [District], Pakistan: mango orchards, cucumber tunnels, open fields of sugarcane, wheat, tomatoes and banana, and harvest days.',
   alternates: { canonical: '/gallery' },
 };
 

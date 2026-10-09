@@ -5,8 +5,9 @@ import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import Eyebrow from '../components/Eyebrow';
 import { galleryItems } from '../data/gallery';
 import { images } from '../data/images';
+import { farmingTypes } from '../data/farming';
 
-const FILTERS = ['All', 'Orchard', 'Tunnels', 'Fields', 'Harvest'] as const;
+const FILTERS = ['All', ...farmingTypes, 'Harvest'] as const;
 type Filter = typeof FILTERS[number];
 
 const videoCards = [

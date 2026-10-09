@@ -1,3 +1,5 @@
+import { cropList } from './crops';
+
 export const farmStats = {
   acres: 100,
   yearsOfFarming: 25,
@@ -6,7 +8,7 @@ export const farmStats = {
 
 export const site = {
   name: 'Bachani Farms',
-  tagline: `Growing mango, banana, papaya, cucumber, sugarcane and wheat on ${farmStats.acres} acres in [District], Pakistan.`,
+  tagline: `Growing ${cropList} on ${farmStats.acres} acres in [District], Pakistan.`,
   address: 'Farm address, [District], [Province], Pakistan',
   district: '[District]',
   province: '[Province]',

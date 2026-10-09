@@ -3,12 +3,6 @@
   <url><loc>https://www.bachanifarms.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.bachanifarms.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bachanifarms.com/crops</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.bachanifarms.com/crops/mango</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.bachanifarms.com/crops/banana</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.bachanifarms.com/crops/papaya</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.bachanifarms.com/crops/cucumber</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.bachanifarms.com/crops/sugarcane</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.bachanifarms.com/crops/wheat</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bachanifarms.com/farm</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bachanifarms.com/farm/quality</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.bachanifarms.com/farm/sustainability</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

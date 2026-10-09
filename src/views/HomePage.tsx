@@ -12,7 +12,8 @@ import Accordion from '../components/Accordion';
 import ProofStrip from '../components/ProofStrip';
 import Marquee from '../components/Marquee';
 import ProcessSteps from '../components/ProcessSteps';
-import { crops } from '../data/crops';
+import { crops, cropList } from '../data/crops';
+import { farmingSummary } from '../data/farming';
 import { images } from '../data/images';
 import { farmStats } from '../data/site';
 import { faqs } from '../data/faqs';
@@ -75,7 +76,7 @@ export default function HomePage() {
   ];
 
   const whyCards = [
-    { icon: Sprout, title: 'Six crops, one farm.', body: 'Orchard, plantation, tunnel and open-field farming under one management, so every crop gets specialist attention.' },
+    { icon: Sprout, title: 'Three methods, one farm.', body: 'Mango orchards, cucumber tunnels and open fields for sugarcane, wheat, tomatoes and banana, all cared for under one management.' },
     { icon: ShieldCheck, title: 'Grown at the source.', body: 'We grow and harvest our own produce, so we know where every crop came from.' },
     { icon: Handshake, title: 'Built for contract supply.', body: 'Planned harvest windows, consistent quality and reliable handover for buyers who depend on both.' },
     { icon: Droplets, title: 'Care for land and water.', body: 'Efficient irrigation, healthy soil and careful planning keep the farm productive for the next generation.' },
@@ -129,7 +130,7 @@ export default function HomePage() {
             <em className="not-italic italic" style={{ color: '#CAA549' }}>fields.</em>
           </h1>
           <p className="text-[15px] md:text-lg leading-[1.65] mb-7 md:mb-8 max-w-xl" style={{ color: 'rgba(251,250,245,0.85)' }}>
-            Bachani Farms grows mango, banana, papaya, cucumber, sugarcane and wheat, and supplies quality produce to export buyers under contract.
+            Bachani Farms grows {cropList}, and supplies quality produce to export buyers under contract.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
             <Button to="/crops" variant="light" className="w-full sm:w-auto justify-center whitespace-nowrap">
@@ -186,7 +187,7 @@ export default function HomePage() {
               maxWidth: '900px',
             }}
           >
-            We are a working farm first. Every mango, cucumber, banana and stalk of wheat starts with soil we know, water we plan for, and a team that shows up in every season. Bachani Farms grows{' '}
+            We are a working farm first. {farmingSummary} Each harvest starts with soil we know, water we plan for, and a team that shows up in every season. Bachani Farms grows{' '}
             <strong className="font-semibold" style={{ color: '#0B5828' }}>six crops</strong>{' '}
             across {farmStats.acres} acres in [District], and supplies them{' '}
             <strong className="font-semibold" style={{ color: '#0B5828' }}>under contract</strong>{' '}
@@ -238,7 +239,7 @@ export default function HomePage() {
                 }
                 .crops-bento .bento-mango    { grid-column: 1 / 3; grid-row: 1 / 3; }
                 .crops-bento .bento-banana   { grid-column: 3 / 4; grid-row: 1 / 2; }
-                .crops-bento .bento-papaya   { grid-column: 4 / 5; grid-row: 1 / 2; }
+                .crops-bento .bento-tomatoes   { grid-column: 4 / 5; grid-row: 1 / 2; }
                 .crops-bento .bento-cucumber { grid-column: 3 / 4; grid-row: 2 / 4; }
                 .crops-bento .bento-sugarcane{ grid-column: 4 / 5; grid-row: 2 / 4; }
                 .crops-bento .bento-wheat    { grid-column: 1 / 3; grid-row: 3 / 4; }
@@ -250,7 +251,7 @@ export default function HomePage() {
               const bentoClass: Record<string, string> = {
                 mango: 'bento-mango',
                 banana: 'bento-banana',
-                papaya: 'bento-papaya',
+                tomatoes: 'bento-tomatoes',
                 cucumber: 'bento-cucumber',
                 sugarcane: 'bento-sugarcane',
                 wheat: 'bento-wheat',
@@ -284,18 +285,22 @@ export default function HomePage() {
                     >
                       {crop.name}
                     </div>
-                    <div className="flex gap-0.5">
-                      {MONTHS_SHORT.map((m, i) => {
-                        const isHarvest = crop.harvestMonths.includes(i + 1);
-                        return (
-                          <div
-                            key={i}
-                            className="h-1 flex-1 rounded-full"
-                            style={{ backgroundColor: isHarvest ? crop.accentColor : 'rgba(255,255,255,0.2)' }}
-                          />
-                        );
-                      })}
-                    </div>
+                    {crop.harvestMonths.length > 0 ? (
+                      <div className="flex gap-0.5">
+                        {MONTHS_SHORT.map((m, i) => {
+                          const isHarvest = crop.harvestMonths.includes(i + 1);
+                          return (
+                            <div
+                              key={i}
+                              className="h-1 flex-1 rounded-full"
+                              style={{ backgroundColor: isHarvest ? crop.accentColor : 'rgba(255,255,255,0.2)' }}
+                            />
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="font-mono text-[10px] text-paper/75">Harvest dates to be confirmed</p>
+                    )}
                   </div>
                 </article>
               );
@@ -613,9 +618,9 @@ export default function HomePage() {
                 cls: '',
               },
               {
-                src: images['papaya'].url,
-                alt: 'Papaya trees with ripening fruit',
-                caption: 'Papaya plantation',
+                src: images['tomatoes'].url,
+                alt: images['tomatoes'].alt,
+                caption: 'Tomatoes ripening on the vine',
                 cls: '',
               },
             ].map((photo, i) => (

@@ -1,3 +1,6 @@
+import { crops } from './crops';
+import { farmingTypes, type FarmingMethod } from './farming';
+
 export interface GrowthPanel {
   index: number;
   monolabel: string;
@@ -8,32 +11,27 @@ export interface GrowthPanel {
   photoLabel: string;
 }
 
-export const growthPanels: GrowthPanel[] = [
-  {
-    index: 0,
-    monolabel: '01 / 03',
-    title: 'Orchards and plantations.',
-    body: 'Mango, banana and papaya grow in long, well-tended rows that we care for all year.',
-    cropSlugs: ['mango', 'banana', 'papaya'],
+const panelContent: Record<FarmingMethod, { body: string; imageKey: string }> = {
+  Orchards: {
+    body: 'Mangoes grow in our orchards, where each tree is cared for through flowering, fruit development and harvest.',
     imageKey: 'growOrchard',
-    photoLabel: '01 · ORCHARDS AND PLANTATIONS',
   },
-  {
-    index: 1,
-    monolabel: '02 / 03',
-    title: 'Tunnel farming.',
-    body: 'Cucumbers grow in tunnels that protect the crop and extend the season.',
-    cropSlugs: ['cucumber'],
+  Tunnels: {
+    body: 'Cucumber grows in our tunnels, with vines trained on trellises and cared for through the growing season.',
     imageKey: 'growTunnel',
-    photoLabel: '02 · TUNNEL FARMING',
   },
-  {
-    index: 2,
-    monolabel: '03 / 03',
-    title: 'Open fields.',
-    body: 'Sugarcane and wheat grow in open fields, planted and harvested with the seasons.',
-    cropSlugs: ['sugarcane', 'wheat'],
+  'Open fields': {
+    body: 'Sugarcane, wheat, tomatoes and banana grow outdoors in our open fields, each tended and harvested through its own season.',
     imageKey: 'growField',
-    photoLabel: '03 · OPEN FIELDS',
   },
-];
+};
+
+export const growthPanels: GrowthPanel[] = farmingTypes.map((method, index) => ({
+  index,
+  monolabel: `${String(index + 1).padStart(2, '0')} / 03`,
+  title: `${method}.`,
+  body: panelContent[method].body,
+  cropSlugs: crops.filter(crop => crop.method === method).map(crop => crop.slug),
+  imageKey: panelContent[method].imageKey,
+  photoLabel: `${String(index + 1).padStart(2, '0')} · ${method.toUpperCase()}`,
+}));

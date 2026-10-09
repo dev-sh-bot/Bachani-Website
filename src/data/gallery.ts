@@ -1,4 +1,5 @@
 import { images } from './images';
+import { type FarmingMethod } from './farming';
 
 export interface GalleryItem {
   key: string;
@@ -7,7 +8,7 @@ export interface GalleryItem {
   alt: string;
   width: number;
   height: number;
-  category: 'Orchard' | 'Tunnels' | 'Fields' | 'Harvest';
+  category: FarmingMethod | 'Harvest';
 }
 
 export const galleryItems: GalleryItem[] = [
@@ -18,7 +19,7 @@ export const galleryItems: GalleryItem[] = [
     url: images['mangoOrchard'].url,
     caption: 'Mangoes growing in the orchard',
     alt: images['mangoOrchard'].alt,
-    category: 'Orchard',
+    category: 'Orchards',
   },
   {
     key: 'g2',
@@ -27,16 +28,16 @@ export const galleryItems: GalleryItem[] = [
     url: images['banana'].url,
     caption: 'Bananas growing on the plant',
     alt: images['banana'].alt,
-    category: 'Orchard',
+    category: 'Open fields',
   },
   {
     key: 'g3',
     width: 900,
     height: 700,
-    url: images['papaya'].url,
-    caption: 'Papaya trees in fruit',
-    alt: 'Papaya trees with ripening fruit on the farm',
-    category: 'Orchard',
+    url: images['tomatoes'].url,
+    caption: 'Tomatoes ripening on the vine',
+    alt: images['tomatoes'].alt,
+    category: 'Open fields',
   },
   {
     key: 'g4',
@@ -63,7 +64,7 @@ export const galleryItems: GalleryItem[] = [
     url: images['growField'].url,
     caption: 'Wheat field in spring',
     alt: 'Golden wheat field in spring at Bachani Farms',
-    category: 'Fields',
+    category: 'Open fields',
   },
   {
     key: 'g7',
@@ -72,7 +73,7 @@ export const galleryItems: GalleryItem[] = [
     url: images['sugarcane'].url,
     caption: 'Sugarcane before harvest',
     alt: 'Tall sugarcane ready for harvest in an open field',
-    category: 'Fields',
+    category: 'Open fields',
   },
   {
     key: 'g8',
@@ -81,7 +82,7 @@ export const galleryItems: GalleryItem[] = [
     url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format',
     caption: 'Wheat fields at sunrise',
     alt: 'Sunrise over crop fields ready for harvest',
-    category: 'Fields',
+    category: 'Open fields',
   },
   {
     key: 'g9',
@@ -108,15 +109,15 @@ export const galleryItems: GalleryItem[] = [
     url: images['bananaBunch'].url,
     caption: 'Banana bunches developing',
     alt: images['bananaBunch'].alt,
-    category: 'Orchard',
+    category: 'Open fields',
   },
   {
     key: 'g12',
-    width: 600,
+    width: 1200,
     height: 800,
-    url: images['papayaTrees'].url,
-    caption: 'Papaya before harvest',
-    alt: images['papayaTrees'].alt,
-    category: 'Orchard',
+    url: images['tomatoHarvest'].url,
+    caption: 'Freshly harvested tomatoes',
+    alt: images['tomatoHarvest'].alt,
+    category: 'Harvest',
   },
 ];

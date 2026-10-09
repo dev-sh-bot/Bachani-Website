@@ -3,17 +3,18 @@
 import { useState } from 'react';
 import Eyebrow from '../components/Eyebrow';
 import HarvestAlmanac from '../components/HarvestAlmanac';
-import { crops, type Crop } from '../data/crops';
+import { crops, cropList } from '../data/crops';
+import { farmingTypes, farmingSummary } from '../data/farming';
 import { images } from '../data/images';
 import { farmStats } from '../data/site';
 
-const FILTERS = ['All', 'Fruit', 'Vegetable', 'Field crop'] as const;
+const FILTERS = ['All', ...farmingTypes] as const;
 type Filter = typeof FILTERS[number];
 
 export default function CropsPage() {
   const [filter, setFilter] = useState<Filter>('All');
 
-  const displayed = filter === 'All' ? crops : crops.filter(c => c.category === filter);
+  const displayed = filter === 'All' ? crops : crops.filter(c => c.method === filter);
 
   return (
     <>
@@ -29,7 +30,7 @@ export default function CropsPage() {
             Six crops across orchards, tunnels and fields
           </h1>
           <p className="text-lg text-stone max-w-lg">
-            Each crop at Bachani Farms has its own season, its own growing method and its own team.
+            {farmingSummary}
           </p>
         </div>
       </section>
@@ -42,6 +43,7 @@ export default function CropsPage() {
               key={f}
               type="button"
               onClick={() => setFilter(f)}
+              aria-pressed={filter === f}
               className="px-5 py-2 rounded-full text-sm font-medium transition-colors"
               style={{
                 backgroundColor: filter === f ? '#0B5828' : '#EEF3E6',
@@ -62,7 +64,8 @@ export default function CropsPage() {
             return (
               <div
                 key={crop.slug}
-                className={`group flex flex-col md:flex-row gap-10 py-16 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                id={crop.slug}
+                className={`group scroll-mt-24 flex flex-col md:flex-row gap-10 py-16 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
               >
                 <div className="motion-card w-full md:w-1/2 rounded-[32px] overflow-hidden aspect-[4/3] bg-sage">
                   {img && (
@@ -134,7 +137,7 @@ export default function CropsPage() {
               Crops grown at Bachani Farms
             </h2>
             <p className="text-base text-stone leading-relaxed">
-              Bachani Farms grows mango, banana, papaya, cucumber, sugarcane and wheat across {farmStats.acres} acres in [District], Pakistan. Each crop follows its own season, and we supply our harvest under contract to trusted buyers in Pakistan and abroad.
+              Bachani Farms grows {cropList} across {farmStats.acres} acres in [District], Pakistan. Each crop follows its own season, and we supply our harvest under contract to trusted buyers in Pakistan and abroad.
             </p>
           </div>
         </div>

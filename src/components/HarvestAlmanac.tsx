@@ -54,7 +54,11 @@ export default function HarvestAlmanac({ singleSlug }: HarvestAlmanacProps) {
                   {crop.name}
                 </span>
               </div>
-              {MONTHS.map((_, i) => {
+              {crop.harvestMonths.length === 0 ? (
+                <div className="flex items-center py-2 text-xs text-stone" style={{ gridColumn: 'span 12' }}>
+                  Harvest dates to be confirmed
+                </div>
+              ) : MONTHS.map((_, i) => {
                 const month = i + 1;
                 const isHarvest = crop.harvestMonths.includes(month);
                 return (

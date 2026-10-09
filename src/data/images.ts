@@ -55,20 +55,20 @@ export const images: Record<string, ImageData> = {
   bananaBunch: {
     key: 'bananaBunch',
     url: 'https://images.unsplash.com/photo-1539808505172-71ad23d99b4a?w=900&h=700&fit=crop&auto=format',
-    alt: 'A full bunch of green bananas growing on the plantation',
+    alt: 'A full bunch of green bananas growing outdoors in an open field',
     aspectRatio: '4/3',
   },
-  papaya: {
-    key: 'papaya',
-    url: 'https://images.unsplash.com/photo-1569959808474-debc539b72aa?w=900&h=700&fit=crop&auto=format',
-    alt: 'Papaya trees in rows with fruit clusters growing at Bachani Farms',
-    aspectRatio: '4/3',
+  tomatoes: {
+    key: 'tomatoes',
+    url: '/images/crops/tomatoes-vine.jpg',
+    alt: 'Red and green tomatoes ripening on leafy vines outdoors',
+    aspectRatio: '3/2',
   },
-  papayaTrees: {
-    key: 'papayaTrees',
-    url: 'https://images.unsplash.com/photo-1625007507813-28644d7d8b03?w=600&h=800&fit=crop&auto=format',
-    alt: 'A papaya tree with clusters of ripening fruit on the trunk',
-    aspectRatio: '3/4',
+  tomatoHarvest: {
+    key: 'tomatoHarvest',
+    url: '/images/crops/tomatoes-harvest.jpg',
+    alt: 'Ripe red tomatoes gathered in a wicker basket',
+    aspectRatio: '3/2',
   },
   cucumber: {
     key: 'cucumber',

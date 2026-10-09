@@ -1,3 +1,6 @@
+import { crops, cropList } from './crops';
+import { farmingSummary } from './farming';
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -7,7 +10,7 @@ export const faqs: Record<string, FaqItem[]> = {
   home: [
     {
       question: 'What does Bachani Farms grow?',
-      answer: 'Bachani Farms grows six crops: mango in orchards, banana and papaya in plantations, cucumber in tunnels, and sugarcane and wheat in open fields.',
+      answer: `Bachani Farms uses three kinds of farming. ${farmingSummary}`,
     },
     {
       question: 'Where is the farm located?',
@@ -19,7 +22,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       question: 'When is each crop harvested?',
-      answer: 'Mango is harvested from May to August, cucumber from December to April, sugarcane from November to March and wheat in March and April. Banana and papaya give fruit through most of the year. Harvest months are indicative and can vary with the season.',
+      answer: `${crops.map(crop => `${crop.name}: ${crop.harvestMonths.length ? crop.harvestLabel : 'harvest dates to be confirmed'}`).join('; ')}. Harvest months are indicative and can vary with the season.`,
     },
     {
       question: 'How can a buyer work with Bachani Farms?',
@@ -47,7 +50,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       question: 'Which crops can you supply?',
-      answer: 'We grow mango, banana, papaya, cucumber, sugarcane and wheat. Each has its own season, shown in our harvest calendar.',
+      answer: `We grow ${cropList}. Each has its own season, shown in our harvest calendar.`,
     },
     {
       question: 'Can I visit the farm?',

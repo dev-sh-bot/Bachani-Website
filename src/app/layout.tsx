@@ -1,3 +1,4 @@
+import { cropList } from '@/data/crops';
 import type { Metadata } from 'next';
 import SiteShell from '@/components/SiteShell';
 import { site } from '@/data/site';
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.seo.canonical),
   title: 'Bachani Farms | Mango, Cucumber & Crop Farm in Pakistan',
   description:
-    'Bachani Farms grows mango, banana, papaya, cucumber, sugarcane and wheat in [District], Pakistan, and supplies quality produce to export buyers under contract.',
+    `Bachani Farms grows ${cropList} in [District], Pakistan, and supplies quality produce to export buyers under contract.`,
   icons: {
     icon: '/bachani-logo.png',
     apple: '/bachani-logo.png',

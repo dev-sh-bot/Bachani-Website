@@ -1,10 +1,12 @@
+import { cropNames } from '@/data/crops';
+import { farmingSummary } from '@/data/farming';
 import type { Metadata } from 'next';
 import CropsPage from '@/views/CropsPage';
 
 export const metadata: Metadata = {
-  title: 'Our Crops | Mango, Banana, Papaya, Cucumber, Sugarcane, Wheat',
+  title: `Our Crops | ${cropNames.join(', ')}`,
   description:
-    'Explore the six crops grown at Bachani Farms in [District], Pakistan: mango, banana, papaya, cucumber, sugarcane and wheat, with growing methods and harvest seasons.',
+    `Explore the three farming methods at Bachani Farms in [District], Pakistan. ${farmingSummary}`,
   alternates: { canonical: '/crops' },
 };
 

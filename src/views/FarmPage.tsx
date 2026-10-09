@@ -6,11 +6,13 @@ import Button from '../components/Button';
 import StatCounter from '../components/StatCounter';
 import { images } from '../data/images';
 import { crops } from '../data/crops';
+import { growthPanels } from '../data/growth';
+import { farmingSummary } from '../data/farming';
 import { farmStats } from '../data/site';
 
 const markerData = [
-  { num: 1, label: 'Mango orchard', desc: 'Rows of mango trees, the oldest part of the farm.' },
-  { num: 2, label: 'Banana and papaya plantation', desc: 'Banana and papaya grown side by side in sheltered rows.' },
+  { num: 1, label: 'Mango orchards', desc: 'Rows of mango trees, the oldest part of the farm.' },
+  { num: 2, label: 'Banana and tomato fields', desc: 'Banana and tomatoes grown outdoors in open fields.' },
   { num: 3, label: 'Farmhouse and store', desc: 'The farmhouse, stores and space for sorting the harvest.' },
   { num: 4, label: 'Cucumber tunnels', desc: 'Tunnels where cucumbers grow through the winter.' },
   { num: 5, label: 'Sugarcane fields', desc: 'Open fields of sugarcane grown for the crushing season.' },
@@ -49,7 +51,7 @@ export default function FarmPage() {
             How the farm works
           </h1>
           <p className="text-lg text-stone max-w-xl mb-12">
-            From orchards and plantations to tunnels and open fields, here is how we grow across {farmStats.acres} acres.
+            Three kinds of farming across {farmStats.acres} acres. {farmingSummary}
           </p>
           <StatCounter
             stats={[
@@ -93,13 +95,13 @@ export default function FarmPage() {
                 </g>
                 <text x="80" y="220" fontSize="11" fill="#7A5E16" fontFamily="monospace">① Mango Orchard</text>
 
-                {/* Plantation */}
+                {/* Banana and tomato fields */}
                 {[...Array(4)].map((_, r) =>
                   [...Array(4)].map((_, c) => (
                     <rect key={`p-${r}-${c}`} x={240 + c * 22} y={60 + r * 28} width={16} height={22} fill="#E6C23E" opacity={0.5} rx="2" />
                   ))
                 )}
-                <text x="248" y="200" fontSize="11" fill="#7A5E16" fontFamily="monospace">② Plantation</text>
+                <text x="248" y="200" fontSize="11" fill="#7A5E16" fontFamily="monospace">② Banana &amp; tomatoes</text>
 
                 {/* Tunnels */}
                 {[...Array(4)].map((_, i) => (
@@ -165,29 +167,10 @@ export default function FarmPage() {
             className="font-display text-4xl font-semibold tracking-[-0.02em] mb-12"
             style={{ fontFamily: 'Fraunces, Georgia, serif', color: '#16211A' }}
           >
-            Growing methods
+            Three kinds of farming
           </h2>
           <div className="space-y-8">
-            {[
-              {
-                title: 'Orchards and plantations.',
-                body: 'Mango, banana and papaya grow in long, open rows that we tend all year. Regular pruning, feeding and watering keep every tree and plant healthy.',
-                imageKey: 'orchard',
-                links: ['mango', 'banana', 'papaya'],
-              },
-              {
-                title: 'Tunnel farming.',
-                body: 'Tunnels protect our cucumbers through the cooler months, letting us grow a fresh crop when open fields cannot.',
-                imageKey: 'cucumberTunnel',
-                links: ['cucumber'],
-              },
-              {
-                title: 'Open fields.',
-                body: 'Sugarcane and wheat follow the seasons in our open fields, planted and harvested in step with the year.',
-                imageKey: 'openField',
-                links: ['sugarcane', 'wheat'],
-              },
-            ].map((method, i) => (
+            {growthPanels.map((method, i) => (
               <div
                 key={i}
                 className={`grid md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}
@@ -213,7 +196,7 @@ export default function FarmPage() {
                   </h3>
                   <p className="text-base text-stone leading-relaxed mb-6">{method.body}</p>
                   <div className="flex flex-wrap gap-2">
-                    {method.links.map(slug => {
+                    {method.cropSlugs.map(slug => {
                       const crop = crops.find(c => c.slug === slug);
                       return crop ? (
                         <span key={slug} className="px-3 py-1 rounded-full text-sm font-medium" style={{ color: '#0B5828', border: '1px solid #DCE3D2' }}>

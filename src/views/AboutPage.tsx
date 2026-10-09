@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { farmStats } from '../data/site';
+import { cropList } from '../data/crops';
+import { farmingSummary } from '../data/farming';
 
 const chapters = [
   {
@@ -13,7 +15,7 @@ const chapters = [
   {
     era: 'OVER THE YEARS',
     title: 'Growing the farm',
-    body: 'The farm grew to include mango, banana, papaya, cucumber, sugarcane and wheat. Each crop brings its own rhythm to the land and the people who tend it.',
+    body: `The farm grew to include ${cropList}. Each crop brings its own rhythm to the land and the people who tend it.`,
     image: '/images/about/orchard-birds.webp',
     alt: 'A flock of birds above the orchard trees behind the farm entrance',
     side: 'left',
@@ -21,7 +23,7 @@ const chapters = [
   {
     era: 'THE PRESENT',
     title: 'Today',
-    body: `Today, our team of ${farmStats.teamMembers} people cares for ${farmStats.acres} acres of orchards, tunnels and fields. We keep growing with care for the soil, the harvest and the generations to come.`,
+    body: `Today, our team of ${farmStats.teamMembers} people cares for ${farmStats.acres} acres using three kinds of farming. ${farmingSummary} We keep growing with care for the soil, the harvest and the generations to come.`,
     image: '/images/about/farm-at-sunset.webp',
     alt: 'The farm courtyard, benches and illuminated pathways surrounded by fields at sunset',
     side: 'right',
