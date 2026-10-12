@@ -1,8 +1,12 @@
 # Owner portrait assets
 
-## Current generated placeholder
+## Current supplied portrait
 
-`public/images/about/owner-generated.png` is the current portrait in the About page's owner section. It was created with the built-in OpenAI image generation tool at the user's request. It depicts an entirely fictional adult male and is not a photograph of Ghulam Nabi Bachani. Replace it when the owner's actual portrait is supplied.
+`public/images/about/owner-portrait.jpg` is the current portrait in the About page's owner section. The user supplied this image as `codex-clipboard-c161f16d-11e5-4688-9a38-916505fd12cb.jpg` and requested its use in the About section. The original image was copied into the website assets without modification.
+
+## Previous generated placeholder
+
+`public/images/about/owner-generated.png` is the previous generated portrait, retained as an unused asset. It was created with the built-in OpenAI image generation tool at the user's request. It depicts an entirely fictional adult male and is not a photograph of Ghulam Nabi Bachani.
 
 ### Generation prompt
 

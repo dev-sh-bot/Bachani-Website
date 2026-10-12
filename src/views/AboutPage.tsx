@@ -99,10 +99,10 @@ export default function AboutPage() {
       >
         <div className="mx-auto grid max-w-[1200px] items-center gap-8 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-12 lg:gap-24 xl:gap-40">
           <div className="relative mx-auto aspect-[3/4] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-sage md:mx-0 md:rounded-[32px]">
-            {/* Temporary portrait; replace with the owner's photograph when available. */}
+            {/* Portrait supplied by the user for the owner section. */}
             <Image
-              src="/images/about/owner-generated.png"
-              alt="AI-generated placeholder portrait of a male farm owner"
+              src="/images/about/owner-portrait.jpg"
+              alt="Male portrait supplied for the Bachani Farms owner section"
               fill
               sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 767px) 460px, (max-width: 1279px) 40vw, 450px"
               className="object-cover object-center"
