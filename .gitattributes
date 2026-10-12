@@ -151,5 +151,5 @@ public/bachani-logo.png -filter -diff -merge -text
 # Keep generated gallery photos directly available to deployment platforms.
 public/images/gallery/*.webp -filter -diff -merge -text
 
-# Keep the supplied About Us photos directly available to deployment platforms.
-public/images/about/*.webp -filter -diff -merge -text
+# Keep all About page image formats directly available to deployment platforms.
+public/images/about/** -filter -diff -merge -text
