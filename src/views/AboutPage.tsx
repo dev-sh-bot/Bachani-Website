@@ -91,6 +91,48 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section
+        id="farm-owner"
+        className="px-6 pb-16 sm:px-10 sm:pb-20 lg:px-12 lg:pb-24"
+        aria-labelledby="owner-name"
+      >
+        <div className="mx-auto grid max-w-[1200px] items-center gap-8 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-12 lg:gap-24 xl:gap-40">
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-sage md:mx-0 md:rounded-[32px]">
+            {/* Temporary portrait; replace with the owner's photograph when available. */}
+            <Image
+              src="/images/about/owner-placeholder.jpg"
+              alt="Temporary male portrait for the Bachani Farms owner section"
+              fill
+              sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 767px) 460px, (max-width: 1279px) 40vw, 450px"
+              className="object-cover object-center"
+            />
+          </div>
+
+          <div>
+            <p className="font-body text-base leading-7 text-stone lg:text-lg lg:leading-7">
+              A farm is a promise kept across many seasons. We plant with care, harvest at the right
+              time and stay in the field with our team, because good produce is decided long before
+              it leaves the farm.
+            </p>
+            <figure className="mt-7 border-t border-gold pt-6 md:mt-8 md:pt-7">
+              <blockquote className="text-[clamp(1.625rem,2.5vw,2.25rem)] italic leading-[1.3] tracking-[-0.01em] text-ink">
+                <p>
+                  &ldquo;Farming teaches patience. We look after the land, and the land looks after us.&rdquo;
+                </p>
+              </blockquote>
+              <figcaption className="mt-8 md:mt-10 lg:mt-12">
+                <h2 id="owner-name" className="font-body text-base font-semibold leading-6 text-ink">
+                  Ghulam Nabi Bachani
+                </h2>
+                <p className="mt-1 font-mono text-[10px] uppercase leading-5 tracking-[0.16em] text-stone sm:text-[11px]">
+                  Owner, Bachani Farms
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
