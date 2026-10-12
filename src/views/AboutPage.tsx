@@ -101,8 +101,8 @@ export default function AboutPage() {
           <div className="relative mx-auto aspect-[3/4] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-sage md:mx-0 md:rounded-[32px]">
             {/* Temporary portrait; replace with the owner's photograph when available. */}
             <Image
-              src="/images/about/owner-placeholder.jpg"
-              alt="Temporary male portrait for the Bachani Farms owner section"
+              src="/images/about/owner-generated.png"
+              alt="AI-generated placeholder portrait of a male farm owner"
               fill
               sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 767px) 460px, (max-width: 1279px) 40vw, 450px"
               className="object-cover object-center"
